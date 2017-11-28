@@ -122,6 +122,8 @@ let
     Helpers = [
         Text.Load = Text.Load,
         Module.FromPath = Module.FromPath,
+        Module.Explore = Module.Explore,
+        Module.Import = Module.Import,
         Module.BuildPath = Module.BuildPath
     ],
     Library = "A record with all loaded functions", // TODO
