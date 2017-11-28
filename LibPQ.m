@@ -8,11 +8,6 @@ LibPQ:
 **/
 
 let
-    /* Temporary sample inputs */
-    Directory = "C:\Users\Виталий\Desktop\LibPQ\Functions\",
-    File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
-    Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
-
     /* Constants */
     EXTENSION = ".m",
     PATHSEPLOCAL = "\",
@@ -114,8 +109,11 @@ let
             Return,
 
     /* Playground */
+    Directory = "C:\Users\Виталий\Desktop\LibPQ\Functions\",
+    File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
+    Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
     Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин"},
-    ReturnDebug = Module.Explore(Dirs),
+    ReturnDebug = Module.Import("fnReadParameters", Dirs),
 
 
     /* Last touch: export helper functions defined above */
