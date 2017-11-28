@@ -41,7 +41,7 @@ let
                         then directory
                         else directory & PathSep,
             ProperName = Text.Replace(funcname, "_", "."),
-            Return = ProperDir & PathSep & ProperName & Extension
+            Return = ProperDir & ProperName & Extension
         in
             Return,
 
