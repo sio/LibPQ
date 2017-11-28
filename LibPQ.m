@@ -10,7 +10,7 @@ LibPQ:
 let
     /* Constants */
     EXTENSION = ".m",
-    PATHSEPLOCAL = "\",
+    PATHSEPLOCAL = Text.Start("\\",1),
     PATHSEPREMOTE = "/",
 
     /* Load text content from local file or from web */
