@@ -8,7 +8,11 @@ let
     Rules = Table.AddColumn(
                 RulesSource,
                 "Comparer",
-                each fnMakeComparer([Поле1], [Поле2], [Сравнение])),
+                each fnMakeComparer(
+                    [Поле1],
+                    [Поле2],
+                    [Сравнение],
+                    [СложнаяПроверка])),
     RulesColumnNames = List.Transform(
                 Rules[Название],
                 each CheckPrefix & _),

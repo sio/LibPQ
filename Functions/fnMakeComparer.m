@@ -1,4 +1,7 @@
-(field1 as text, field2 as text, optional operator as text) => let
+(optional field1     as nullable text,
+ optional field2     as nullable text,
+ optional operator   as nullable text,
+ optional expression as nullable text) => let
     /*
     Factory for creating comparison functions to be used later
     for filling ErrorCheck columns
@@ -11,7 +14,12 @@
         else Record.Field(record, field),
     NewFunction = (record as record) => let
         Result =
-            if      Operator = "=" or Operator = "=="
+            if      expression <> null
+            then    Expression.Evaluate(
+                        "(" & Text.Replace(expression, "[", "record[") & ")",
+                        Record.AddField(#shared, "record", record)
+                    )
+            else if Operator = "=" or Operator = "=="
             then    GetFieldOrNull(record, field1) = GetFieldOrNull(record, field2)
             else if Operator = "<>" or Operator = "!="
             then    GetFieldOrNull(record, field1) <> GetFieldOrNull(record, field2)
