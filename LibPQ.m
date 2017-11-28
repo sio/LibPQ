@@ -31,11 +31,11 @@ let
             ),
 
     /* Load Power Query function or module from file */
-    Function.FromPath = (path as text, optional local as logical) =>
+    Module.FromPath = (path as text, optional local as logical) =>
         Expression.Evaluate(Text.Load(path, local), #shared),
 
     /* Calculate where the function code is located */
-    Function.GetPath = (funcname as text, directory as text, optional local as logical) =>
+    Module.BuildPath = (funcname as text, directory as text, optional local as logical) =>
         let
             /* Defaults */
             Local = if local is null then true else local,
@@ -51,7 +51,7 @@ let
             Return,
 
     /* Find all modules in the list of directories */
-    Modules.Explore = (directories as list) =>
+    Module.Explore = (directories as list) =>
         let
             Files = List.Generate(
                 () => [i = -1, results = 0],
@@ -92,14 +92,14 @@ let
 
     /* Playground */
     Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин"},
-    ReturnDebug = Modules.Explore(Dirs),
+    ReturnDebug = Module.Explore(Dirs),
 
 
     /* Last touch: export helper functions defined above */
     Helpers = [
         Text.Load = Text.Load,
-        Function.FromPath = Function.FromPath,
-        Function.GetPath = Function.GetPath
+        Module.FromPath = Module.FromPath,
+        Module.BuildPath = Module.BuildPath
     ],
     Library = "A record with all loaded functions", // TODO
     Return = Record.Combine({Helpers, Library})
