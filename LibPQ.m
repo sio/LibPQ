@@ -12,6 +12,11 @@ let
     File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
     Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
 
+    /* Constants */
+    EXTENSION = ".m",
+    PATHSEPLOCAL = "\",
+    PATHSEPREMOTE = "/",
+
     /* Load text content from local file or from web */
     Text.Load = (destination as text, optional local as logical) =>
         let
@@ -32,16 +37,15 @@ let
     Function.GetPath = (funcname as text, directory as text, optional local as logical) =>
         let
             /* Defaults */
-            Extension = ".m",
             Local = if local is null then true else local,
-            PathSep = if Local then "\" else "/",  // Windows specific
+            PathSep = if Local then PATHSEPLOCAL else PATHSEPREMOTE,
 
             /* Path building */
             ProperDir = if Text.EndsWith(directory, PathSep)
                         then directory
                         else directory & PathSep,
             ProperName = Text.Replace(funcname, "_", "."),
-            Return = ProperDir & ProperName & Extension
+            Return = ProperDir & ProperName & EXTENSION
         in
             Return,
 
