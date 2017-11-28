@@ -113,7 +113,18 @@ let
     File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
     Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
     Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин"},
-    ReturnDebug = Module.Import("fnReadParameters", Dirs),
+
+    Module = (name) => try
+                Record.Field(Helpers, name)
+             otherwise try
+                Module.Import(name, Dirs)
+             otherwise try
+                Module.FromWeb(name, Url)
+             otherwise
+                error "Module not found",
+
+
+    ReturnDebug = Module("fnReadParameters"),
 
 
     /* Last touch: export helper functions defined above */
