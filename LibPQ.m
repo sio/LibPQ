@@ -45,7 +45,13 @@ let
         in
             Return,
 
-    /* Playground */
-    Test = "Hello"
+    /* Last touch: export helper functions defined above */
+    Helpers = [
+        Text.Load = Text.Load,
+        Function.FromPath = Function.FromPath,
+        Function.GetPath = Function.GetPath
+    ],
+    Library = "A record with all loaded functions", // TODO
+    Return = Record.Combine({Helpers, Library})
 in
     Function.FromPath(Url, false)
