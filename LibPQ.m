@@ -89,6 +89,29 @@ let
         in
             Return,
 
+    /* Import module (first match) from the list of possible locations */
+    Module.Import = (name as text, locations as list) =>
+        let
+            Paths = List.Transform(
+                        locations,
+                        each Module.BuildPath(name, _)
+                    ),
+            Loop = List.Generate(
+                () => [i=-1, object=null],
+                each [i] < List.Count(Paths),
+                each [
+                    i = [i] + 1,
+                    object = if [object] is null
+                             then try Module.FromPath(Paths{i})
+                                  otherwise null
+                             else [object]
+                ],
+                each [object]
+            ),
+            Return = try List.Select(Loop, each _ <> null){0}
+                     otherwise error "Module not found"
+        in
+            Return,
 
     /* Playground */
     Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин"},
