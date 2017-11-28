@@ -50,36 +50,49 @@ let
         in
             Return,
 
+    /* Find all modules in the list of directories */
+    Modules.Explore = (directories as list) =>
+        let
+            Files = List.Generate(
+                () => [i = -1, results = 0],
+                each [i] < List.Count(directories),
+                each [
+                    i = [i]+1,
+                    folder = directories{i},
+                    files = Folder.Contents(folder),
+                    filter = Table.SelectRows(
+                                files,
+                                each [Extension] = EXTENSION
+                            ),
+                    results = Table.RowCount(filter),
+                    module = List.Transform(
+                                    filter[Name],
+                                    each Text.BeforeDelimiter(
+                                        _,
+                                        EXTENSION,
+                                        {0,RelativePosition.FromEnd}
+                                    )
+                                )
+                ],
+                each [
+                    folder = [folder],
+                    module = [module],
+                    results = [results]
+                ]
+            ),
+            Return = Table.ExpandListColumn(
+                            Table.FromRecords(
+                                List.Select(Files, each [results]>0)
+                            ),
+                            "module"
+                        )
+        in
+            Return,
+
 
     /* Playground */
     Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин"},
-    Files = List.Generate(
-        () => [i = -1, results = 0],
-        each [i] < List.Count(Dirs),
-        each [
-            i = [i]+1,
-            files = if [results] > 0
-                    then #table({"Extension"},{})  // empty table
-                    else Folder.Contents(Dirs{i}),
-            filter = Table.SelectRows(
-                        files,
-                        each [Extension] = EXTENSION
-                    ),
-            results = if [results] > 0
-                      then [results]  // break the loop
-                      else Table.RowCount(filter),
-            functions = List.Transform(
-                            filter[Name],
-                            each Text.BeforeDelimiter(
-                                _,
-                                EXTENSION,
-                                {0,RelativePosition.FromEnd}
-                            )
-                        )
-        ]
-    ),
-    Functions = List.Skip(Files, each [results]=0){0}[functions],
-    ReturnDebug = Functions,
+    ReturnDebug = Modules.Explore(Dirs),
 
 
     /* Last touch: export helper functions defined above */
