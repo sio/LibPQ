@@ -112,7 +112,7 @@ let
     Directory = "C:\Users\Виталий\Desktop\LibPQ\Functions\",
     File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
     Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
-    Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин", "C:\Pquery"},
+    Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин", "C:\Pquer"},
 
     Module = (name) => try
                 Record.Field(Helpers, name)
