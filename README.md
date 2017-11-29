@@ -36,48 +36,48 @@ All modules are grouped into namespaces, much like the standard library:
 
 ## Factory
 
-- **Factory.Comparer**:
+- **Factory.Comparer** -
   Factory for creating comparison functions from conditions provided as text
 
 
 ## Module
 
-- **Module.BuildPath**:
+- **Module.BuildPath** -
   Calculate where the function code is located
 
-- **Module.Explore**:
+- **Module.Explore** -
   Find all modules in the list of directories
 
-- **Module.FromPath**:
+- **Module.FromPath** -
   Load Power Query function or module from file
 
-- **Module.Import**:
+- **Module.Import** -
   Import a module from default locations (LibPQPath)
 
-- **Module.ImportAny**:
+- **Module.ImportAny** -
   Import module (first match) from the list of possible locations
 
-- **Module.Library**:
+- **Module.Library** -
   A record with all available local modules already imported
 
-- **Module.NameFromProper**:
+- **Module.NameFromProper** -
   Convert proper module name (with dots) into something that follows Power
   Query naming restrictions for queries in workbook
 
-- **Module.NameToProper**:
+- **Module.NameToProper** -
   Convert module name to proper filename
 
 ## Read
 
-- **Read.CSV**:
+- **Read.CSV** -
   Load arbitrary CSV file with unknown number of columns (up to 1000) and
   unknown number of extra lines before the column names (first column name has
   to be known)
 
-- **Read.Parameter**:
+- **Read.Parameter** -
   Fetch parameter value from a data table in current workbook
 
-- **Read.Text**:
+- **Read.Text** -
   Load text content from local file or from web
 
 
