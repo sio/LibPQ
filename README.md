@@ -81,6 +81,20 @@ All modules are grouped into namespaces, much like the standard library:
   Load text content from local file or from web
 
 
+# Compatibility with @tycho01's library
+
+LibPQ allows specifying multiple possible locations for source code, that's why
+you can add @tycho01's library as a fallback.
+
+Any module from that library should be supported, though some will require
+adding a `Load` query to your workbook. Follow these steps to do so (after
+installing LibPQ into your workbook):
+
+- Create a new blank query
+- Replace all its code with text `LibPQ`
+- Save the query under the name "Load"
+
+
 # Contributing
 
 All contributions are welcome!
