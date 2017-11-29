@@ -151,9 +151,7 @@ let
         Module.NameToProper = Module.NameToProper,
         Module.NameFromProper = Module.NameFromProper,
         Module.Explore = Module.Explore,
-        Module.ImportAny = Module.ImportAny,
-        Module.Import = Module.Import,
-        Module.Library = Module.Library
+        Module.ImportAny = Module.ImportAny
     ],
     Library.Names = List.Distinct(Module.Explore(Sources.Local)[module]),
     Library = List.Last(
@@ -171,6 +169,13 @@ let
             each [record]
         )
     ),
-    Module.Library = Record.Combine({Helpers, Library})
+    Module.Library = Record.Combine({Helpers, Library}),
+
+    /* Main function */
+    Main = (optional modulename as nullable text) =>
+        if modulename is null then
+            Module.Library
+        else
+            Module.Import(modulename)
 in
-    Module.Import
+    Main
