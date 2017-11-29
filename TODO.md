@@ -1,2 +1,3 @@
 - [ ] Look into LibPQ("CrossUsage") error when loading from tycho01 GitHub
 - [ ] Add list of modules with their descriptions to README
+- [x] Rethink the naming convention for modules, maybe "Namespace.Item.pq"?
