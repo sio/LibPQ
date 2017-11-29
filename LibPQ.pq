@@ -23,7 +23,10 @@ let
         in
             Text.FromBinary(
                 Binary.Buffer(
-                    Fetcher(destination)
+                    try
+                        Fetcher(destination)
+                    otherwise
+                        error "Read.Text: can not fetch " & destination
                 )
             ),
 
@@ -60,7 +63,16 @@ let
                 each [
                     i = [i]+1,
                     folder = directories{i},
-                    files = Folder.Contents(folder),
+                    iserror = (try Table.RowCount(
+                                    Folder.Contents(folder)
+                               ))[HasError],  // For some weird reason try does
+                                              // not catch DataSource error.
+                                              // Check "try Folder.Contents("C:\none")"
+                                              // it will return [HasError]=false
+                    files = if iserror then
+                                #table({"Name","Extension"},{})
+                            else
+                                Folder.Contents(folder),
                     filter = Table.SelectRows(
                                 files,
                                 each [Extension] = EXTENSION
