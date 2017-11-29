@@ -1,1 +1,6 @@
+# User-specific configuration
 LibPQPath.pq
+
+
+# Temporary files
+*.swp
