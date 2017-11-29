@@ -85,7 +85,7 @@ let
             Return,
 
     /* Import module (first match) from the list of possible locations */
-    Module.Import = (name as text, locations as list) =>
+    Module.ImportAny = (name as text, locations as list, optional local as logical) =>
         let
             Paths = List.Transform(
                         locations,
@@ -133,6 +133,7 @@ let
         Module.FromPath = Module.FromPath,
         Module.Explore = Module.Explore,
         Module.Import = Module.Import,
+        Module.ImportAny = Module.ImportAny,
         Module.BuildPath = Module.BuildPath
     ],
     Library = "A record with all loaded functions", // TODO
