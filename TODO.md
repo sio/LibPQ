@@ -1,2 +1,2 @@
 - [ ] Look into LibPQ("CrossUsage") error when loading from tycho01 GitHub
-- [ ] Add README
+- [ ] Add list of modules with their descriptions to README
