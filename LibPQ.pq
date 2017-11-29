@@ -9,7 +9,7 @@ LibPQ:
 
 let
     /* Constants */
-    EXTENSION = ".m",
+    EXTENSION = ".pq",
     PATHSEPLOCAL = Text.Start("\\",1),
     PATHSEPREMOTE = "/",
 
