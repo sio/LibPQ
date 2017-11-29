@@ -89,7 +89,7 @@ let
         let
             Paths = List.Transform(
                         locations,
-                        each Module.BuildPath(name, _)
+                        each Module.BuildPath(name, _, local)
                     ),
             Loop = List.Generate(
                 () => [i=-1, object=null],
@@ -97,34 +97,41 @@ let
                 each [
                     i = [i] + 1,
                     object = if [object] is null
-                             then try Module.FromPath(Paths{i})
+                             then try Module.FromPath(Paths{i}, local)
                                   otherwise null
                              else [object]
                 ],
                 each [object]
             ),
-            Return = try List.Select(Loop, each _ <> null){0}
-                     otherwise error "Module not found"
+            Return = try
+                        List.Select(Loop, each _ <> null){0}
+                     otherwise
+                        error "Module.ImportAny: `" & name & "` not found"
         in
             Return,
+
+    /* Import a module from default locations (LibPQ.Sources) */
+    Module.Import = (name as text) =>
+             try
+                Record.Field(#shared, name)
+             otherwise try
+                Record.Field(Helpers, name)
+             otherwise try
+                Module.ImportAny(name, Sources.Local)
+             otherwise try
+                Module.ImportAny(name, Sources.Web, false)
+             otherwise
+                error "Module.Import: `" & name & "` not found",
+
 
     /* Playground */
     Directory = "C:\Users\Виталий\Desktop\LibPQ\Functions\",
     File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
     Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
-    Dirs = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин", "C:\Pquer"},
+    Sources.Web = {"https://raw.githubusercontent.com/tycho01/pquery/master/"},
+    Sources.Local = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин", "C:\Pquer"},
 
-    Module = (name) => try
-                Record.Field(Helpers, name)
-             otherwise try
-                Module.Import(name, Dirs)
-             otherwise try
-                Module.FromWeb(name, Url)
-             otherwise
-                error "Module not found",
-
-
-    ReturnDebug = Module("fnReadParameters"),
+    ReturnDebug = Module.Import("fnReadParameters"),
 
 
     /* Last touch: export helper functions defined above */
