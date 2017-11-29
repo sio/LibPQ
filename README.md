@@ -5,7 +5,7 @@ Query Formula Language (also known as M language) and a loader to import source
 code from external modules into Power Query.
 
 The loader supports importing from several sources and is compatible with
-[https://github.com/tycho01/pquery](@tycho01)'s library, so you can use its
+[@tycho01](https://github.com/tycho01/pquery)'s library, so you can use its
 content in addition to the modules found in this repo. LibPQ supports importing
 code from modules located on the filesystem or from the modules published on
 the web.
