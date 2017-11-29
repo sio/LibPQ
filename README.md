@@ -26,12 +26,12 @@ queries in Advanced Editor.
 # LibPQ modules
 All modules are grouped into namespaces, much like the standard library:
 
-- *Date*: Functions for working with dates
-- *Factory*: Functions that create other functions
-- *List*: Functions for working with lists
-- *Module*: LibPQ tools for importing source code
-- *Read*: Functions that import data
-- *Text*: Functions for working with text
+- **Date** - Functions for working with dates
+- **Factory** - Functions that create other functions
+- **List** - Functions for working with lists
+- **Module** - LibPQ tools for importing source code
+- **Read** - Functions that import data
+- **Text** - Functions for working with text
 
 
 ## Factory
