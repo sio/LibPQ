@@ -34,13 +34,13 @@ All modules are grouped into namespaces, much like the standard library:
 - **Text** - Functions for working with text
 
 
-## Factory
+## Factory functions
 
 - **Factory.Comparer** -
   Factory for creating comparison functions from conditions provided as text
 
 
-## Module
+## Module functions
 
 - **Module.BuildPath** -
   Calculate where the function code is located
@@ -67,7 +67,7 @@ All modules are grouped into namespaces, much like the standard library:
 - **Module.NameToProper** -
   Convert module name to proper filename
 
-## Read
+## Read functions
 
 - **Read.CSV** -
   Load arbitrary CSV file with unknown number of columns (up to 1000) and
