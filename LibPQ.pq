@@ -141,7 +141,7 @@ let
              otherwise try
                 Module.ImportAny(name, Sources.Web, false)
              otherwise
-                error "Module.Import: `" & name & "` not found",
+                error "Module.Import: `" & name & "` not found or has syntax errors",
 
     /* Last touch: export helper functions defined above */
     Helpers = [
