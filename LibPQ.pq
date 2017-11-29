@@ -1,13 +1,14 @@
-/******************
-   UNFINISHED!!!
-******************/
-
 /**
 LibPQ:
-    Access all components of the library as a record.
+    Access Power Query functions and queries stored in source code modules
+    on filesystem or on the Web.
 **/
 
 let
+    /* Read LibPQ settings */
+    Sources.Local = LibPQPath[Local],
+    Sources.Web   = LibPQPath[Web],
+
     /* Constants */
     EXTENSION = ".pq",
     PATHSEPLOCAL = Text.Start("\\",1),
@@ -40,10 +41,14 @@ let
             ProperDir = if Text.EndsWith(directory, PathSep)
                         then directory
                         else directory & PathSep,
-            ProperName = Text.Replace(funcname, "_", "."),
+            ProperName = Module.NameToProper(funcname),
             Return = ProperDir & ProperName & EXTENSION
         in
             Return,
+
+    /* Module name converters */
+    Module.NameToProper = (name) => Text.Replace(name, "_", "."),
+    Module.NameFromProper = (name) => Text.Replace(name, ".", "_"),
 
     /* Find all modules in the list of directories */
     Module.Explore = (directories as list) =>
@@ -113,7 +118,9 @@ let
     /* Import a module from default locations (LibPQ.Sources) */
     Module.Import = (name as text) =>
              try
-                Record.Field(#shared, name)
+                Record.Field(#shared, Module.NameFromProper(name))
+             otherwise try
+                Record.Field(#shared, Module.NameToProper(name))
              otherwise try
                 Record.Field(Helpers, name)
              otherwise try
@@ -123,27 +130,34 @@ let
              otherwise
                 error "Module.Import: `" & name & "` not found",
 
-
-    /* Playground */
-    Directory = "C:\Users\Виталий\Desktop\LibPQ\Functions\",
-    File = "C:\Users\Виталий\Desktop\LibPQ\Functions\fnReadParameters.m",
-    Url = "https://raw.githubusercontent.com/tycho01/pquery/master/Load.pq",
-    Sources.Web = {"https://raw.githubusercontent.com/tycho01/pquery/master/"},
-    Sources.Local = {Directory, "C:\Users\Виталий\Desktop\Номенклатура", "M:\Виталий Потяркин", "C:\Pquer"},
-
-    ReturnDebug = Module.Import("fnReadParameters"),
-
-
     /* Last touch: export helper functions defined above */
     Helpers = [
         Text.Load = Text.Load,
         Module.FromPath = Module.FromPath,
+        Module.BuildPath = Module.BuildPath,
+        Module.NameToProper = Module.NameToProper,
+        Module.NameFromProper = Module.NameFromProper,
         Module.Explore = Module.Explore,
-        Module.Import = Module.Import,
         Module.ImportAny = Module.ImportAny,
-        Module.BuildPath = Module.BuildPath
+        Module.Import = Module.Import,
+        Module.Library = Module.Library
     ],
-    Library = "A record with all loaded functions", // TODO
-    Return = Record.Combine({Helpers, Library})
+    Library.Names = List.Distinct(Module.Explore(Sources.Local)[module]),
+    Library = List.Last(
+        List.Generate(
+            () => [i=-1,record=[]],
+            each [i] < List.Count(Library.Names),
+            each [
+                i = [i] + 1,
+                record = Record.AddField(
+                    [record],
+                    Library.Names{i},
+                    Module.Import(Library.Names{i})
+                )
+            ],
+            each [record]
+        )
+    ),
+    Module.Library = Record.Combine({Helpers, Library}) // TODO: Library
 in
-    ReturnDebug
+    Module.Import
