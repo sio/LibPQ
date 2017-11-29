@@ -159,6 +159,6 @@ let
             each [record]
         )
     ),
-    Module.Library = Record.Combine({Helpers, Library}) // TODO: Library
+    Module.Library = Record.Combine({Helpers, Library})
 in
     Module.Import
