@@ -116,7 +116,7 @@ let
         in
             Return,
 
-    /* Import a module from default locations (LibPQ.Sources) */
+    /* Import a module from default locations (LibPQPath) */
     Module.Import = (name as text) =>
              try
                 Record.Field(#shared, Module.NameFromProper(name))
