@@ -16,7 +16,7 @@ let
     VERSIONDATE = #date(2017,11,29),  // Date of last significant library change
 
     /* Load text content from local file or from web */
-    Text.Load = (destination as text, optional local as logical) =>
+    Read.Text = (destination as text, optional local as logical) =>
         let
             Local = if local is null then true else local,
             Fetcher = if Local then File.Contents else Web.Contents
@@ -29,7 +29,7 @@ let
 
     /* Load Power Query function or module from file */
     Module.FromPath = (path as text, optional local as logical) =>
-        Expression.Evaluate(Text.Load(path, local), #shared),
+        Expression.Evaluate(Read.Text(path, local), #shared),
 
     /* Calculate where the function code is located */
     Module.BuildPath = (funcname as text, directory as text, optional local as logical) =>
@@ -133,7 +133,7 @@ let
 
     /* Last touch: export helper functions defined above */
     Helpers = [
-        Text.Load = Text.Load,
+        Read.Text = Read.Text,
         Module.FromPath = Module.FromPath,
         Module.BuildPath = Module.BuildPath,
         Module.NameToProper = Module.NameToProper,
