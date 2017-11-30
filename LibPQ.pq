@@ -93,12 +93,15 @@ let
                     results = [results]
                 ]
             ),
-            Return = Table.ExpandListColumn(
+            Return = try
+                        Table.ExpandListColumn(
                             Table.FromRecords(
                                 List.Select(Files, each [results]>0)
                             ),
                             "module"
                         )
+                     otherwise
+                        #table({"folder", "module", "results"},{})
         in
             Return,
 
