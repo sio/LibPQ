@@ -1,6 +1,6 @@
 /**
 Date.Parse:
-    Improved date parser for text containing dates in unspecified format.
+    Improved date parser for strings containing dates in unspecified format.
 **/
 (datetext as text) =>
 let
