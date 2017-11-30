@@ -5,11 +5,12 @@ Query Formula Language (also known as M language) and a loader to import source
 code from external modules into Power Query.
 
 The loader supports importing from several sources and is compatible with
-[@tycho01](https://github.com/tycho01/pquery)'s library, so you can use its
+[@tycho01][tycho01]'s library, so you can use its
 content in addition to the modules found in this repo. LibPQ supports importing
 code from modules located on the filesystem or from the modules published on
 the web.
 
+[tycho01]: https://github.com/tycho01/pquery
 
 # Installation and usage
 
@@ -99,7 +100,7 @@ All modules are grouped into namespaces, much like the standard library:
 # Compatibility with @tycho01's library
 
 LibPQ allows specifying multiple possible locations for source code, that's why
-you can add @tycho01's library as a fallback.
+you can add [@tycho01's library][tycho01] as a fallback.
 
 Any module from that library should be supported, though some will require
 adding a `Load` query to your workbook. To create a `Load` alias for `LibPQ`
@@ -110,7 +111,7 @@ you need to:
 - Save the query under the name `Load`
 
 Now the `Load` function will be available from `#shared` context, and you
-should be able to import any module from @tycho01's library.
+should be able to import any module from [@tycho01's library][tycho01].
 
 
 # Contributing
