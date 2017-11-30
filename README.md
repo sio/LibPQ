@@ -87,12 +87,15 @@ LibPQ allows specifying multiple possible locations for source code, that's why
 you can add @tycho01's library as a fallback.
 
 Any module from that library should be supported, though some will require
-adding a `Load` query to your workbook. Follow these steps to do so (after
-installing LibPQ into your workbook):
+adding a `Load` query to your workbook. To create a `Load` alias for `LibPQ`
+you need to:
 
 - Create a new blank query
 - Replace all its code with text `LibPQ`
-- Save the query under the name "Load"
+- Save the query under the name `Load`
+
+Now the `Load` function will be available from `#shared` context, and you
+should be able to import any module from @tycho01's library.
 
 
 # Contributing
