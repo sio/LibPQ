@@ -176,8 +176,13 @@ let
 
     /* Main function */
     Main = (optional modulename as nullable text) =>
-        if modulename is null then
+        if modulename is null
+        or modulename = "Module.Library"
+        then
             Module.Library
+        else if modulename = "Module.Import"
+        then
+            Module.Import
         else
             Module.Import(modulename)
 in
