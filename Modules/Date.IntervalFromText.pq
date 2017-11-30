@@ -10,6 +10,21 @@ optional full_months as logical) =>
 let
     Date.Parse = Date.FromText, // TODO: need a better date parser function
 
+    /* Predefined intervals */
+    Presets = #table(
+        {"interval", "start", "end"},
+        {
+            {"1 квартал", "январь", "март"},
+            {"2 квартал", "апрель", "июнь"},
+            {"3 квартал", "июль", "сентябрь"},
+            {"4 квартал", "октябрь", "декабрь"},
+            {"1 полугодие", "январь", "июнь"},
+            {"2 полугодие", "июль", "декабрь"},
+            {"9 месяцев", "январь", "сентябрь"}
+            //{"2017 год", "январь", "декабрь"}, //TODO: unhandled special case
+        }
+    ),
+
     /* Default parameter values */
     Delimiter = if delimiter is null then " - " else delimiter,
     FullMonth = if
@@ -24,8 +39,42 @@ let
                 else
                     full_months,
 
+    /* Apply presets if necessary */
+    SelectedPreset =
+        try
+            Table.ToRecords(
+                Table.SelectRows(
+                    Table.AddColumn(
+                        Presets,
+                        "match",
+                        each Text.Contains(
+                            Text.Lower(date_interval),
+                            [interval]
+                        )
+                    ),
+                    each [match] = true
+                )
+            ){0}
+        otherwise
+            null,
+    ApplyPreset = (interval as text, preset as record) =>
+        let
+            input = Text.Lower(interval),
+            start = Text.Replace(input, preset[interval], preset[start]),
+            end = Text.Replace(input, preset[interval], preset[end])
+        in
+            start & Delimiter & end,
+    InputWithPresetsApplied =
+        if
+            SelectedPreset is null
+        then
+            date_interval
+        else
+            ApplyPreset(date_interval, SelectedPreset),
+
+    /* Parsing */
     EndStrings = List.Combine({
-        Text.Split(date_interval, Delimiter),
+        Text.Split(InputWithPresetsApplied, Delimiter),
         {null}
     }),
     DateStart = Date.Parse(EndStrings{0}),
