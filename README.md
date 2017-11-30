@@ -13,7 +13,7 @@ the web.
 
 # Installation and usage
 
-### Copy the source code to filesystem (optional)
+### Copy source code to the filesystem (optional)
 
 Download the [contents of this repo][zip] and extract it anywhere you want. If
 you skip this step you will not be able to list all available modules with
