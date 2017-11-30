@@ -13,15 +13,30 @@ the web.
 
 # Installation and usage
 
+### Copy the source code to filesystem (optional)
+
+Download the [contents of this repo][zip] and extract it anywhere you want. If
+you skip this step you will not be able to list all available modules with
+`LibPQ()` call and every time you load a module LibPQ will access the network.
+
+### Add LibPQ to the workbook
+
 Create two blank queries in your workbook:
 
 - **LibPQ** - copy the contents of [LibPQ.pq](LibPQ.pq) verbatim
 - **LibPQPath** - provide location of modules source code (local and/or web).
   See sample at [LibPQPath-sample.pq](LibPQPath-sample.pq)
 
+### Import LibPQ modules when writing your queries
+
 Import any of the available modules via `LibPQ("modulename")` when writing your
 queries in Advanced Editor.
 
+To import all modules available locally use `LibPQ()` with no arguments (or
+`null`). That will return a record where keys are module names and values are
+the results of loading those modules (function object or output of a query).
+
+[zip]: https://github.com/sio/LibPQ/archive/master.zip
 
 # LibPQ modules
 All modules are grouped into namespaces, much like the standard library:
