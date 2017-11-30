@@ -12,20 +12,31 @@ let
 
     /* Default parameter values */
     Delimiter = if delimiter is null then " - " else delimiter,
-    FullMonth = if full_months is null then true else full_months,
+    FullMonth = if
+                    full_months is null
+                then
+                    if
+                        EndStrings{1} is null
+                    then
+                        Date.Day(DateStart) = 1
+                    else
+                        Date.Day(DateEndParsed) = 1 and Date.Day(DateStart) = 1
+                else
+                    full_months,
 
     EndStrings = List.Combine({
         Text.Split(date_interval, Delimiter),
         {null}
     }),
     DateStart = Date.Parse(EndStrings{0}),
-    DateEndParsed =
+    DateEndParsed = try Date.Parse(EndStrings{1}) otherwise null,
+    DateEndGuess =
         if
             EndStrings{1} is null
         then
             DateStart
         else
-            Date.Parse(EndStrings{1}),
-    DateEnd = if FullMonth then Date.EndOfMonth(DateEndParsed) else DateEndParsed
+            DateEndParsed,
+    DateEnd = if FullMonth then Date.EndOfMonth(DateEndGuess) else DateEndGuess
 in
     {DateStart, DateEnd}
