@@ -51,6 +51,15 @@ All modules are grouped into namespaces, much like the standard library:
 - **Text** - Functions for working with text
 
 
+## Date functions
+
+- **Date.IntervalFromText** -
+  Given a string of text such as "Jan 2017 - Dec 2017" return a list of two
+  dates corresponding to beginning and end of the interval
+
+- **Date.Parse** -
+  Improved date parser for strings containing dates in unspecified format
+
 ## Factory functions
 
 - **Factory.Comparer** -
