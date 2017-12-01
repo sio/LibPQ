@@ -1,4 +1,12 @@
-// TODO: docstring, review, save
+/**
+Table.CountDuplicates:
+    Add a column to a table that will show the number of rows that contain the
+    same value of key_field as the current row.
+
+    Optional dupe_field is the name of the new column, by default
+    "Duplicate.Count". dupe_field has to contain a "." character, because it's
+    used as a delimiter by Table.PrefixColumns.
+**/
 
 
 (table as table, key_field as text, optional dupe_field as text) =>

@@ -47,6 +47,7 @@ All modules are grouped into namespaces, much like the standard library:
 - **List** - Functions for working with lists
 - **Module** - LibPQ tools for importing source code
 - **Read** - Functions that import data
+- **Table** - Functions for table operations
 - **Text** - Functions for working with text
 
 
@@ -96,6 +97,11 @@ All modules are grouped into namespaces, much like the standard library:
 - **Read.Text** -
   Load text content from local file or from web
 
+## Table functions
+
+- **Table.CountDuplicates** -
+  Add a column to a table that will show the number of rows that contain the
+  same value of key field as the current row.
 
 # Compatibility with @tycho01's library
 
