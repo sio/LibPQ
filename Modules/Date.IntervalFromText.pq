@@ -8,7 +8,7 @@ Date.IntervalFromText:
 optional delimiter as text,
 optional full_months as logical) =>
 let
-    Date.Parse = Date.FromText, // TODO: need a better date parser function
+    Date.Parse = try LibPQ("Date.Parse") otherwise Date.FromText,
 
     /* Predefined intervals */
     Presets = #table(
