@@ -21,9 +21,12 @@ let
             {"1 полугодие", "январь", "июнь"},
             {"2 полугодие", "июль", "декабрь"},
             {"9 месяцев", "январь", "сентябрь"}
-            //{"2017 год", "январь", "декабрь"}, //TODO: unhandled special case
         }
     ),
+    PresetFullYear = [
+        trim = {",","."," ",";"},
+        remove = {"г", "год"}
+    ],
 
     /* Default parameter values */
     Delimiter = if delimiter is null then " - " else delimiter,
@@ -39,7 +42,31 @@ let
                 else
                     full_months,
 
-    /* Apply presets if necessary */
+    /* Check if date_interval represents full year */
+    YearCandidates =
+        List.Transform(
+            PresetFullYear[remove],
+            each
+                try
+                    Number.FromText(
+                        Text.Trim(
+                            Text.Replace(Text.Lower(date_interval), _, ""),
+                            PresetFullYear[trim]
+                        )
+                    )
+                otherwise
+                    null
+        ),
+    YearDetected = List.Select(YearCandidates, each _ <> null){0},
+    YearText =
+        try
+            Text.From(#date(YearDetected, 1, 1)) &
+            Delimiter &
+            Text.From(#date(YearDetected, 12, 31))
+        otherwise
+            null,
+
+    /* Apply substitution presets if necessary */
     SelectedPreset =
         try
             Table.ToRecords(
@@ -74,7 +101,14 @@ let
 
     /* Parsing */
     EndStrings = List.Combine({
-        Text.Split(InputWithPresetsApplied, Delimiter),
+        Text.Split(
+            if
+                YearText is null
+            then
+                InputWithPresetsApplied
+            else
+                YearText,
+            Delimiter),
         {null}
     }),
     DateStart = Date.Parse(EndStrings{0}),
