@@ -7,7 +7,7 @@ let
     DupeDelimiter = ".",
     DupeName =
         if
-            Text.Contains(DupeField, ".")
+            Text.Contains(DupeField, DupeDelimiter)
         then
             [
                 prefix = Text.BeforeDelimiter(DupeField, DupeDelimiter, 0),
