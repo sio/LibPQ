@@ -11,8 +11,9 @@
           example `error "Division by zero"`
     - [ ] Module.Test("modulename") - run test functions for modulename, if any.
           Return a list of records that contain results for each test:
-        - status = true for passed, false for failed or error
-        - message = error message (as in `(try testfunc())[Error][Message]`)
+        - success = true for passed, false for failed or error
+        - message = error message (as in `(try testfunc())[Error][Message]`) for failed
+          tests, null for successful tests
     - [ ] Module.TestLibrary() - run Module.Test for each module in Module.Library.
           Combine all results into a list and transform it to table. Show modules that
           contain no tests.
