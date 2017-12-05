@@ -2,6 +2,9 @@
 LibPQ:
     Access Power Query functions and queries stored in source code modules
     on filesystem or on the Web.
+
+Project website:
+    https://github.com/sio/LibPQ
 **/
 
 let
