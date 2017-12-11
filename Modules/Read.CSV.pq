@@ -4,11 +4,16 @@ Read.CSV:
     and unknown number of extra lines before the column names (first column name
     has to be known).
 
-    Note: Columns which names start with underscore ("_") will be lost, if
-          there are any in the original CSV.
+    Note: If last column name starts with underscore or is empty, please specify
+          it in the parameters or that column will be lost.
 **/
 
-(tsv_path, first_column_header, optional encoding, optional delimiter) => let
+(tsv_path,
+first_column_header,
+optional encoding,
+optional delimiter as text,
+optional lastcolumn_name as text) =>
+let
 
     /* Default parameter values */
     Delimiter = if delimiter is null then "#(tab)" else delimiter,
@@ -27,9 +32,12 @@ Read.CSV:
                 Source,
                 each [Column1] <> first_column_header),
     WithHeaders = Table.PromoteHeaders(Skipped, [PromoteAllScalars=true]),
-    ValidColumns = List.Select(
-                Table.ColumnNames(WithHeaders),
-                each _ <> "" and not Text.StartsWith(_, "_")),
+    ValidColumns = List.Reverse(
+        List.Skip(
+            List.Reverse(Table.ColumnNames(WithHeaders)),
+            each (_ = "" or Text.StartsWith(_, "_")) and _ <> lastcolumn_name
+        )
+    ),
     Result = Table.SelectColumns(WithHeaders, ValidColumns)
 in
     Result
