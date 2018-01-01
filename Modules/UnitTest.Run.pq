@@ -6,9 +6,9 @@ let
     Suite = LibPQ(suite_name),
 
     /* Load constants */
-    UnitTest.Assert = LibPQ("UnitTest.Assert"),
-    Error.Reason = UnitTest.Assert[Error.Reason],
-    Test.Prefix = UnitTest.Assert[Test.Prefix],
+    Config = LibPQ("UnitTest.Constants"),
+    Error.Reason = Config[Error.Reason],
+    Test.Prefix = Config[Test.Prefix],
 
     /* Analyze test triage result */
     Test.ReadStatus = (try_result) =>
