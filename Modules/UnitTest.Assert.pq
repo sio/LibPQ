@@ -1,0 +1,29 @@
+/**
+A collection of assertion functions for LibPQ UnitTest framework
+
+Calling an assertion function results in one of three outcomes:
+- If assertion is not true, the function has to raise an error with reason
+  "LibPQ.AssertionError" (test FAILED)
+- If an error occurs while calculating the assertion value, the function passes
+  that error up unchanged (test ERROR)
+- If assertion is true, the function returns any value without raising an
+  error. The returned value is not relevant (test PASSED)
+**/
+
+[
+    /** Constants for LibPQ test framework **/
+    Error.Reason = "LibPQ.AssertionError",
+    Test.Prefix = "test",
+
+    /** Basic assertion function **/
+    True = (expression, optional message as nullable text, optional detail) =>
+        let
+            Message = if message = null then "value is not true" else message,
+            Detail = if detail = null then expression else detail,
+            Return =
+                if expression = true
+                then expression
+                else error Error.Record(Error.Reason, Message, Detail)
+        in
+            Return
+]
