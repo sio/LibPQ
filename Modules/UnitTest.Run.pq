@@ -1,11 +1,12 @@
 /**
-Run tests from the test suite referenced by its module name
+Run tests from the test suite that may be passed as a record with test
+functions or may be referenced by its module name
 
 Return a table of test results
 **/
-(suite_name as text) =>
+(suite_name as nullable text, optional suite) =>
 let
-    Suite = LibPQ(suite_name),
+    Suite = if suite = null then LibPQ(suite_name) else suite,
 
     /* Load constants */
     UnitTest.Assert = LibPQ("UnitTest.Assert"),
