@@ -27,4 +27,4 @@ A sample test suite written for LibPQ
     defined in each one of them and not in the record itself
     **/
     Assert = LibPQ("UnitTest.Assert")
-]
+] meta [LibPQ.TestSuite = 1]
