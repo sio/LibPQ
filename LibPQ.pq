@@ -169,7 +169,11 @@ let
                 record = Record.AddField(
                     [record],
                     Library.Names{i},
-                    Module.Import(Library.Names{i})
+                    let
+                        Try = try Module.Import(Library.Names{i}),
+                        Return = if Try[HasError] then Try[Error] else Try[Value]
+                    in
+                        Return
                 )
             ],
             each [record]
