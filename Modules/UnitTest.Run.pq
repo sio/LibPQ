@@ -1,5 +1,7 @@
 /**
 Run tests from the test suite referenced by its module name
+
+Return a table of test results
 **/
 (suite_name as text) =>
 let
@@ -29,26 +31,19 @@ let
     in
         Return,
 
-
+    /* Detect test functions */
     Test.Names = List.Select(
         Record.FieldNames(Suite),
         each Text.StartsWith(_, Test.Prefix)
     ),
-    Test.Table = Table.FromColumns({Test.Names},{"Name"}),
-//    Test.Results = Table.AddColumn(
-//        Test.Table,
-//        "Result",
-//        each try Record.Field(Suite, [Name])()
-//    ),
-//    Test.Statuses = Table.AddColumn(
-//        Test.Results,
-//        "Status.Temp",
-//        each Test.ReadStatus([Result])
-//    ),
+    Test.Table = Table.FromColumns({Test.Names},{"Test"}),
+
+    /* Execute all tests in the suite */
     Column.Factories = {
-        {"Result", each try Record.Field(Suite, [Name])()},
-        {"Status.Temp", each Test.ReadStatus([Result])}
-        // TODO: split temp into two columns
+        {"Result", each try Record.Field(Suite, [Test])()},
+        {"Temp", each Test.ReadStatus([Result])},
+        {"Status", each [Temp]{0}},
+        {"Description", each [Temp]{1}}
     },
     Test.Extra = List.Last(List.Generate(
         () => [i = -1, table = Test.Table],
@@ -63,6 +58,6 @@ let
         ],
         each [table]
     )),
-    Return = Test.Extra
+    Return = Table.RemoveColumns(Test.Extra, "Temp")
 in
     Return
