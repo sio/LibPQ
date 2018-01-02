@@ -11,9 +11,8 @@ Calling an assertion function results in one of three outcomes:
 **/
 
 [
-    /** Constants for LibPQ test framework **/
-    Error.Reason = "LibPQ.AssertionError",
-    Test.Prefix = "test",
+    /** Default error reason **/
+    Error.Reason = LibPQ("UnitTest.Constants")[Error.Reason],
 
     /** Basic assertion function **/
     True = (expression, optional message as nullable text, optional detail) =>

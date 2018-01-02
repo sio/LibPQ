@@ -1,19 +1,46 @@
 # Unit testing with LibPQ
 
-- Store test functions in meta field "LibPQ.Tests" as a function
-  or a list of functions
-- Test function takes no arguments. Its return value can be anything,
-  it is not to be used anywhere.
-    - If test passes, the function should return a value
-    - If test fails, the functions must raise error with a message, for
-      example `error "Division by zero"`
-- Module.Test("modulename") - run test functions for modulename, if any.
-  Return a list of records that contain results for each test.
-  If a module has no tests return
-  `{[success=null, message="No tests for $modulename"]}`, otherwise:
-    - success = true for passed, false for failed or error
-    - message = error message (as in `(try testfunc())[Error][Message]`) for failed
-      tests, null for successful tests
-- Module.TestLibrary() - run Module.Test for each module in Module.Library.
-  Combine all results into a list and transform it to table. Show modules that
-  contain no tests.
+LibPQ offers a basic unit testing framework, which consists of the following
+modules:
+
+- **[UnitTest.Run][Run]** - runner for individual test suites
+- **[UnitTest.Assert][Assert]** - a collection of assertion functions
+- **[UnitTest.Constants][Constants]** - framework-wide constants
+
+# Writing tests
+
+## Test function
+
+A test function is a function that takes zero arguments and produces one of
+three outcomes when called:
+
+1. If test is succesfull (*PASSED*) the test function returns any value. The
+   value itself is irrelevant.
+2. If test is unsuccesfull (*FAILED*) the test function raises
+   `LibPQ.AssertionError`.  (This error reason is defined in
+   [UnitTest.Constants][Constants])
+3. If the test code itself raises an error the test is considered neither
+   succesfull nor failed, and the error must not be silenced (*ERROR*)
+
+## Test suite
+
+A test suite is a collection of test functions, usually related to each other
+in some way. Test suite has to store test functions as a record with field
+names starting with "test" (the test prefix is defined in
+[UnitTest.Constants][Constants]).
+
+Any field of the test suite which name does not start with "test" prefix is
+ignored by the UnitTest framework.
+
+`TODO: define metadata for test suite`
+
+## Assertion functions
+
+In order to simplify writing the tests LibPQ offers some useful assertion
+functions in [UnitTest.Assert][Assert] module. Each of the functions in that
+module is a valid test function that tests some simple assertion. You can use
+them as building blocks for writing your own tests.
+
+[Assert]: Modules/UnitTest.Assert.pq
+[Constants]: Modules/UnitTest.Constants.pq
+[Run]: Modules/UnitTest.Run.pq
