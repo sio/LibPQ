@@ -1,5 +1,8 @@
 /**
-Discover and run tests from all local sources
+Discover and run tests from all local sources.
+
+Represent results as a table either grouped by status (compact_output = true)
+or detailed with one row per each test (compact_output = false).
 **/
 (optional compact_output as nullable logical) =>
 let
