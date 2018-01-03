@@ -4,3 +4,7 @@ LibPQPath.pq
 
 # Temporary files
 *.swp
+
+
+# Test workbooks
+*.xlsx

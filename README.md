@@ -48,7 +48,9 @@ All modules are grouped into namespaces, much like the standard library:
 - **Module** - LibPQ tools for importing source code
 - **Read** - Functions that import data
 - **Table** - Functions for table operations
+- **Tests** - Unit tests for LibPQ modules
 - **Text** - Functions for working with text
+- **UnitTest** - Unit testing framework
 
 
 ## Date functions
@@ -111,6 +113,11 @@ All modules are grouped into namespaces, much like the standard library:
 - **Table.CountDuplicates** -
   Add a column to a table that will show the number of rows that contain the
   same value of key field as the current row.
+
+## Unit testing framework
+
+- **UnitTest** is a basic unit testing framework built into LibPQ. [Read
+  more...](UNITTESTING.md)
 
 # Compatibility with @tycho01's library
 
