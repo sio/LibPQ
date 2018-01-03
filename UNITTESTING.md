@@ -63,6 +63,11 @@ To create test fixture now you can add a helper function to the test suite and
 store it in any field which name does not start with "test" prefix. Such
 function(s) will have to be invoked explicitly from each individual test.
 
+## Sample code
+
+Check the code of [sample][Sample] test suite and the test suite
+[snippet][Snippet] to see LibPQ unit tests in action.
+
 # Running tests and test discovery
 
 Use [UnitTest.Run][Run] function to run individual test suites (passed by
@@ -75,3 +80,5 @@ all test suites from local sources.
 [Constants]: Modules/UnitTest.Constants.pq
 [Discover]: Modules/UnitTest.Discover.pq
 [Run]: Modules/UnitTest.Run.pq
+[Sample]: Samples/Tests.Sample.pq
+[Snippet]: Samples/Tests.Snippet.pq
