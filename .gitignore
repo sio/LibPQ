@@ -8,3 +8,4 @@ LibPQPath.pq
 
 # Test workbooks
 *.xlsx
+*.xlsm
