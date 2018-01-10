@@ -67,6 +67,12 @@ All modules are grouped into namespaces, much like the standard library:
 - **Factory.Comparer** -
   Factory for creating comparison functions from conditions provided as text
 
+## List functions
+
+- **List.UseLastValid** -
+  Validate all items in the input list and replace the invalid ones with the
+  previous valid value.
+
 
 ## Module functions
 
@@ -110,9 +116,16 @@ All modules are grouped into namespaces, much like the standard library:
 
 ## Table functions
 
+- **Table.ConcatenateRows** -
+  Add all columns from tableB to tableA (with values)
+
 - **Table.CountDuplicates** -
   Add a column to a table that will show the number of rows that contain the
   same value of key field as the current row.
+
+- **Table.UseLastValid** -
+  Validate all rows in the input table and replace the invalid ones with the
+  previous valid value.
 
 ## Unit testing framework
 
