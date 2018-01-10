@@ -14,6 +14,8 @@ Table.UseLastValid:
 
 (input as table, validator as function) =>
 let
+    List.UseLastValid = LibPQ("List.UseLastValid"),
+    Table.ConcatenateRows = LibPQ("Table.ConcatenateRows"),
     Temp = [
         Index = "__Index__",
         Valid = "__Valid__",
