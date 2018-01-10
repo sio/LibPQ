@@ -1,3 +1,17 @@
+/**
+Table.UseLastValid:
+    Validate all rows in the input table and replace the invalid ones with the
+    previous valid value.
+
+    Arguments:
+    input
+        The table to transform
+    validator
+        A function that takes one argument (row record) and returns boolean value
+
+    See also: List.UseLastValid
+**/
+
 (input as table, validator as function) =>
 let
     Temp = [

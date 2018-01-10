@@ -1,3 +1,8 @@
+/**
+Table.ConcatenateRows:
+    Add all columns from tableB to tableA (with values)
+**/
+
 (tableA as table, tableB as table) =>
 let
     IndexColumn = [
