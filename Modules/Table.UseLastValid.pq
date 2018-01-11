@@ -33,6 +33,7 @@ let
             )
         ),
     IndexValidator = each _{1},
+    /* Commenting out the following block */
     // LastValidIndex = Table.TransformColumnTypes(
         // Table.FromColumns(
             // {List.Transform(
@@ -44,6 +45,8 @@ let
         // {{Temp[ValidIndex], type number}}
     // ),
     // InputLinked = Table.ConcatenateRows(InputIndexed, LastValidIndex),
+
+    /* And replacing it with this */
     LastValidIndex =
         List.Transform(
             List.UseLastValid(IndexValid, IndexValidator),
@@ -55,6 +58,17 @@ let
         each LastValidIndex{Record.Field(_, Temp[Index])},
         type number
     ),
+
+    /* Does not improve performance! */
+    /*
+     * I'm keeping this branch as a reminder that this was tried and this
+     * failed.
+     *
+     * On my sample data the function from before branching out runs in 15
+     * seconds, after adding these changes it runs much more slowly (I didn't
+     * time the first attempt, the second one I've aborted after waiting for 2
+     * minutes - and it still did not finish).
+    */
     InputPrefixed = Table.PrefixColumns(InputLinked, Temp[Prefix]),
     InputLastValid = Table.Join(
         InputPrefixed,
