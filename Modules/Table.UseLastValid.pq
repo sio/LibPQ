@@ -15,7 +15,7 @@ Table.UseLastValid:
 (input as table, validator as function) =>
 let
     List.UseLastValid = LibPQ("List.UseLastValid"),
-    Table.ConcatenateRows = LibPQ("Table.ConcatenateRows"),
+    // Table.ConcatenateRows = LibPQ("Table.ConcatenateRows"),
     Temp = [
         Index = "__Index__",
         Valid = "__Valid__",
@@ -33,17 +33,28 @@ let
             )
         ),
     IndexValidator = each _{1},
-    LastValidIndex = Table.TransformColumnTypes(
-        Table.FromColumns(
-            {List.Transform(
-                List.UseLastValid(IndexValid, IndexValidator),
-                each _{0}
-            )},
-            {Temp[ValidIndex]}
+    // LastValidIndex = Table.TransformColumnTypes(
+        // Table.FromColumns(
+            // {List.Transform(
+                // List.UseLastValid(IndexValid, IndexValidator),
+                // each _{0}
+            // )},
+            // {Temp[ValidIndex]}
+        // ),
+        // {{Temp[ValidIndex], type number}}
+    // ),
+    // InputLinked = Table.ConcatenateRows(InputIndexed, LastValidIndex),
+    LastValidIndex =
+        List.Transform(
+            List.UseLastValid(IndexValid, IndexValidator),
+            each _{0}
         ),
-        {{Temp[ValidIndex], type number}}
+    InputLinked = Table.AddColumn(
+        InputIndexed,
+        Temp[ValidIndex],
+        each LastValidIndex{Record.Field(_, Temp[Index])},
+        type number
     ),
-    InputLinked = Table.ConcatenateRows(InputIndexed, LastValidIndex),
     InputPrefixed = Table.PrefixColumns(InputLinked, Temp[Prefix]),
     InputLastValid = Table.Join(
         InputPrefixed,
