@@ -4,12 +4,17 @@ This project offers a collection of functions and useful queries for Power
 Query Formula Language (also known as M language) and a loader to import source
 code from external modules into Power Query.
 
-The loader supports importing from several sources and is compatible with
-[@tycho01][tycho01]'s library, so you can use its
-content in addition to the modules found in this repo. LibPQ supports importing
-code from modules located on the filesystem or from the modules published on
-the web.
+### Feature highlights
 
+- Import source code from plain text files located on disk or on the web
+- Unlimited number of import locations ordered by priority
+- Unit testing framework
+- A collection of general purpose functions and queries
+- Compatibility with [@tycho01's library][tycho01]
+
+Introductory overview is available at [my blog][intro].
+
+[intro]: https://potyarkin.ml/posts/2018/expanding-power-query-standard-library-introducing-libpq/
 [tycho01]: https://github.com/tycho01/pquery
 
 # Installation and usage
