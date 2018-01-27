@@ -39,8 +39,16 @@ let
             ),
 
     /* Load Power Query function or module from file */
-    Module.FromPath = (path as text, optional local as logical) =>
-        Expression.Evaluate(Read.Text(path, local), #shared),
+    Module.FromPath = (path as text, optional local as logical, optional name as text) =>
+        let
+            SourceCode = Read.Text(path, local),
+            LoadedObject = Expression.Evaluate(SourceCode, #shared),
+            Module = LoadedObject meta [
+                LibPQ.Module = name,
+                LibPQ.Source = path
+            ]
+        in
+            Module,
 
     /* Calculate where the function code is located */
     Module.BuildPath = (funcname as text, directory as text, optional local as logical) =>
@@ -126,7 +134,7 @@ let
                 each [
                     i = [i] + 1,
                     object = if [object] is null
-                             then try Module.FromPath(Paths{i}, local)
+                             then try Module.FromPath(Paths{i}, local, name)
                                   otherwise null
                              else [object]
                 ],
