@@ -17,6 +17,7 @@ let
     PATHSEPLOCAL = Text.Start("\\",1),
     PATHSEPREMOTE = "/",
     VERSIONDATE = #date(2017,11,29),  // Date of last significant library change
+    ERR_SOURCE_UNREADABLE = "LibPQ.ReadError",
 
     /* Load text content from local file or from web */
     Read.Text = (destination as text, optional local as logical) =>
@@ -29,7 +30,11 @@ let
                     try
                         Fetcher(destination)
                     otherwise
-                        error "Read.Text: can not fetch " & destination
+                        error Error.Record(
+                            ERR_SOURCE_UNREADABLE,
+                            "Read.Text: can not fetch from destination",
+                            destination
+                        )
                 )
             ),
 
