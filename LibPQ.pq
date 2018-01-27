@@ -38,6 +38,36 @@ let
             ),
 
     /*
+    Read the first multiline comment from the source code in Power Query
+    Formula language (also known as M language). That comment is considered a
+    docstring for LibPQ
+    */
+    Read.Docstring = (source_code as text) =>
+    let
+        Docstring = [
+            start = "/*",
+            end = "*/"
+        ],
+        DocstringDirty = Text.BeforeDelimiter(
+            source_code,
+            Docstring[end]
+        ),
+        BeforeDocstring = Text.BeforeDelimiter(
+            DocstringDirty,
+            Docstring[start]
+        ),
+        MustBeEmpty = Text.Trim(BeforeDocstring),
+        DocstringText =
+            if
+                Text.Length(MustBeEmpty) = 0
+            then
+                Text.Trim(DocstringDirty, {"*", "/", " ", "#(cr)", "#(lf)", "#(tab)"})
+            else
+                ""
+    in
+        DocstringText,
+
+    /*
        Load Power Query function or module from file,
        return null if destination unreadable
     */
@@ -48,7 +78,8 @@ let
             LoadedObject = Expression.Evaluate(SourceCode, #shared),
             Module = LoadedObject meta [
                 LibPQ.Module = name,
-                LibPQ.Source = path
+                LibPQ.Source = path,
+                LibPQ.Docstring = Read.Docstring(SourceCode)
             ]
         in
             Module,
@@ -217,6 +248,7 @@ let
     /* Last touch: export helper functions defined above */
     Helpers = [
         Read.Text = Read.Text,
+        Read.Docstring = Read.Docstring,
         Module.FromPath = Module.FromPath,
         Module.BuildPath = Module.BuildPath,
         Module.NameToProper = Module.NameToProper,
