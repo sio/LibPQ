@@ -16,7 +16,6 @@ let
     EXTENSION = ".pq",
     PATHSEPLOCAL = Text.Start("\\",1),
     PATHSEPREMOTE = "/",
-    VERSIONDATE = #date(2017,11,29),  // Date of last significant library change
     ERR_SOURCE_UNREADABLE = "LibPQ.ReadError",
 
     /* Load text content from local file or from web */
