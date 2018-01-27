@@ -38,10 +38,14 @@ let
                 )
             ),
 
-    /* Load Power Query function or module from file */
+    /*
+       Load Power Query function or module from file,
+       return null if destination unreadable
+    */
     Module.FromPath = (path as text, optional local as logical, optional name as text) =>
         let
-            SourceCode = Read.Text(path, local),
+            SourceCode = try Read.Text(path, local)
+                         otherwise "null",
             LoadedObject = Expression.Evaluate(SourceCode, #shared),
             Module = LoadedObject meta [
                 LibPQ.Module = name,
@@ -129,38 +133,85 @@ let
                         each Module.BuildPath(name, _, local)
                     ),
             Loop = List.Generate(
-                () => [i=-1, object=null],
+                () => [
+                    i = -1,
+                    object = null,
+                    lasterror = null
+                ],
                 each [i] < List.Count(Paths),
                 each [
-                    i = [i] + 1,
-                    object = if [object] is null
-                             then try Module.FromPath(Paths{i}, local, name)
-                                  otherwise null
-                             else [object]
-                ],
-                each [object]
+                    // `load` should be evaluated only if absolutely necessary.
+                    // If path is unreadable, no error is raised but null value
+                    // is returned (see Module.FromPath)
+                    load = try Module.FromPath(Paths{i}, local, name),
+                    object = if [object] is null and not load[HasError]
+                             then load[Value]
+                             else [object],
+                    lasterror = if [object] is null and load[HasError]
+                                then load[Error]
+                                else [lasterror],
+                    i = [i] + 1
+                ]
             ),
             Return = try
-                        List.Select(Loop, each _ <> null){0}
+                        List.Select(Loop, each [object] <> null){0}[object]
                      otherwise
-                        error "Module.ImportAny: `" & name & "` not found"
+                        error if List.Last(Loop)[lasterror] <> null
+                              then List.Last(Loop)[lasterror]
+                              else Error.Record(
+                                    ERR_SOURCE_UNREADABLE,
+                                    "Module not found: " & name
+                                   )
         in
             Return,
 
     /* Import a module from default locations (LibPQPath) */
     Module.Import = (name as text) =>
-             try
-                Record.Field(#shared, Module.NameFromProper(name))
-             otherwise try
-                Record.Field(#shared, Module.NameToProper(name))
-             otherwise try
-                Record.Field(Helpers, name)
-             otherwise try
-                Module.ImportAny(name, Sources.Local)
-             otherwise try
+        let
+            Attempts = {
+                Record.Field(#shared, Module.NameFromProper(name)),
+                Record.Field(#shared, Module.NameToProper(name)),
+                Record.Field(Helpers, name),
+                Module.ImportAny(name, Sources.Local),
                 Module.ImportAny(name, Sources.Web, false)
-             otherwise
-                error "Module.Import: `" & name & "` not found or has syntax errors",
+            },
+            Results = List.Last(List.Generate(
+                () => [
+                    i = -1,
+                    module = null,
+                    error = null
+                ],
+                each [i] < List.Count(Attempts),
+                each [
+                    i = [i] + 1,
+                    load = try Attempts{i},
+                    error = if
+                                [module] is null and
+                                load[HasError] and
+                                load[Error][Reason] <> ERR_SOURCE_UNREADABLE
+                            then
+                                load[Error]
+                            else
+                                [error],
+                    module = if
+                                [module] is null and
+                                not load[HasError]
+                             then
+                                load[Value]
+                             else
+                                [module]
+                ]
+            )),
+            Module = if Results[module] <> null
+                     then Results[module]
+                     else if Results[module] is null and Results[error] <> null
+                     then error Results[error]
+                     else error Error.Record(
+                        ERR_SOURCE_UNREADABLE,
+                        "Module not found: " & name
+                     )
+        in
+            Module,
 
     /* Last touch: export helper functions defined above */
     Helpers = [
