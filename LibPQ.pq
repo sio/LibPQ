@@ -168,11 +168,12 @@ let
     Module.Import = (name as text) =>
         let
             Attempts = {
-                Record.Field(#shared, Module.NameFromProper(name)),
-                Record.Field(#shared, Module.NameToProper(name)),
-                Record.Field(Helpers, name),
-                Module.ImportAny(name, Sources.Local),
-                Module.ImportAny(name, Sources.Web, false)
+                // {expression, silent errors}
+                {Record.Field(#shared, Module.NameFromProper(name)), true},
+                {Record.Field(#shared, Module.NameToProper(name)), true},
+                {Record.Field(Helpers, name), true},
+                {Module.ImportAny(name, Sources.Local), false},
+                {Module.ImportAny(name, Sources.Web, false), false}
             },
             Results = List.Last(List.Generate(
                 () => [
@@ -183,9 +184,10 @@ let
                 each [i] < List.Count(Attempts),
                 each [
                     i = [i] + 1,
-                    load = try Attempts{i},
+                    load = try Attempts{i}{0},
                     error = if
                                 [module] is null and
+                                not Attempts{i}{1} and
                                 load[HasError] and
                                 load[Error][Reason] <> ERR_SOURCE_UNREADABLE
                             then
