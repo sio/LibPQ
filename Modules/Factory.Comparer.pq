@@ -1,7 +1,6 @@
 /**
-Factory.Comparer:
-    Factory for creating comparison functions to be used later
-    for filling ErrorCheck columns
+Factory for creating comparison functions to be used later
+for filling ErrorCheck columns
 **/
 
 (optional field1     as nullable text,

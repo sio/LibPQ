@@ -1,7 +1,6 @@
 /**
-Read.Parameter:
-    Fetch parameter value from a data table in current workbook.
-    Parameters must be stored in two column data table (key-value pairs).
+Fetch parameter value from a data table in current workbook.
+Parameters must be stored in two column data table (key-value pairs).
 **/
 
 (parameter as text, optional tablename as text) => let
