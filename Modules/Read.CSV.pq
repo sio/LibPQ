@@ -1,11 +1,10 @@
 /**
-Read.CSV:
-    Load arbitrary CSV file with unknown number of columns (up to 1000)
-    and unknown number of extra lines before the column names (first column name
-    has to be known).
+Load arbitrary CSV file with unknown number of columns (up to 1000)
+and unknown number of extra lines before the column names (first column name
+has to be known).
 
-    Note: If last column name starts with underscore or is empty, please specify
-          it in the parameters or that column will be lost.
+Note: If last column name starts with underscore or is empty, please specify
+      it in the parameters or that column will be lost.
 **/
 
 (tsv_path,

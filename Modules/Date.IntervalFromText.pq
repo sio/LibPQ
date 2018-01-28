@@ -1,7 +1,6 @@
 /**
-Date.IntervalFromText:
-    Given a string of text such as "Jan 2017 - Dec 2017" return a list of two
-    dates corresponding to beginning and end of the interval.
+Given a string of text such as "Jan 2017 - Dec 2017" return a list of two
+dates corresponding to beginning and end of the interval.
 **/
 
 (date_interval as text,
