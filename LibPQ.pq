@@ -17,6 +17,14 @@ let
     PATHSEPLOCAL = Text.Start("\\",1),
     PATHSEPREMOTE = "/",
     ERR_SOURCE_UNREADABLE = "LibPQ.ReadError",
+    DESCRIPTION_FOOTER = (path) =>
+        "<br><br>" &
+        "<i><div>" &
+        "This module was loaded with LibPQ: https://github.com/sio/LibPQ" &
+        "</div><div>" &
+        "Module source code: " &
+        path &
+        "</div></i>",
 
     /* Load text content from local file or from web */
     Read.Text = (destination as text, optional local as logical) =>
@@ -76,11 +84,24 @@ let
             SourceCode = try Read.Text(path, local)
                          otherwise "null",
             LoadedObject = Expression.Evaluate(SourceCode, #shared),
-            Module = LoadedObject meta [
+            ExtraMetadata = [
                 LibPQ.Module = name,
                 LibPQ.Source = path,
-                LibPQ.Docstring = Read.Docstring(SourceCode)
-            ]
+                LibPQ.Docstring = Read.Docstring(SourceCode),
+                Documentation.Name = LibPQ.Module,
+                Documentation.Description =
+                    Text.Replace(LibPQ.Docstring, "#(cr)", "<br>") &
+                    DESCRIPTION_FOOTER(path)
+            ],
+            OldMetadata = Value.Metadata(LoadedObject),
+            NewMetadata = Record.Combine({ExtraMetadata, OldMetadata}),
+            Module = Value.ReplaceType(
+                LoadedObject,
+                Value.ReplaceMetadata(
+                    Value.Type(LoadedObject),
+                    Record.Combine({ExtraMetadata, OldMetadata})
+                )
+            ) meta NewMetadata
         in
             Module,
 
