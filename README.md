@@ -135,7 +135,7 @@ All modules are grouped into namespaces, much like the standard library:
 ## Unit testing framework
 
 - **UnitTest** is a basic unit testing framework built into LibPQ. [Read
-  more...](UNITTESTING.md)
+  more...](Docs/UnitTesting.md)
 
 # Compatibility with @tycho01's library
 
