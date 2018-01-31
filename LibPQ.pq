@@ -95,7 +95,7 @@ let
                 LibPQ.Docstring = Read.Docstring(SourceCode),
                 Documentation.Name = LibPQ.Module,
                 Documentation.Description =
-                    Text.Replace(LibPQ.Docstring, "#(cr)", "<br>") &
+                    Text.Replace(LibPQ.Docstring, "#(lf)", "<br>") &
                     DESCRIPTION_FOOTER(path)
             ],
             OldMetadata = Value.Metadata(LoadedObject),
