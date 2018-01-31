@@ -1,8 +1,10 @@
+# Docstrings in LibPQ
+
 The idea of a docstring is nothing new ([Java][javadoc], [Python][docstring]),
 yet Power Query does not offer any simple convention for documenting your code.
 There is a way to view function documentation in user interface, but adding
 documentation to custom functions is not exactly a straightforward process (see
-[Microsoft documentation][ms-functions-docs] or blog posts by [Imke
+[Microsoft documentation][ms-function-docs] or blog posts by [Imke
 Feldman][imkef-metadata] and [Lars Schreiber][ssbi-metadata]).
 
 LibPQ enables support for basic docstrings in source code modules. It will
@@ -38,6 +40,7 @@ module, see below.
 ```
 
 Will show up in the UI like this:
+
 ![Docstring demonstration][demo]
 
 [docstring]: https://en.m.wikipedia.org/wiki/Docstring
