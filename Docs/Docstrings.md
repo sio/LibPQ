@@ -23,11 +23,11 @@ will become available via user interface. See example below:
 This function:
 ```javascript
 /*
-Hello world function (demo of LibPQ docstrings
+Hello world function (demo of LibPQ docstrings)
 
 Multiline docstrings are supported
 
-There is also support for <u>basic <b>HTML<b></u> formatting (implemented by
+There is also support for <u>basic <b>HTML</b></u> formatting (implemented by
 Power Query / PowerBI itself, this is not a LibPQ feature)
 
 LibPQ will also add information about the location of source code for this
@@ -38,10 +38,11 @@ module, see below.
 ```
 
 Will show up in the UI like this:
-
+![Docstring demonstration][demo]
 
 [docstring]: https://en.m.wikipedia.org/wiki/Docstring
 [javadoc]: https://en.m.wikipedia.org/wiki/Javadoc
 [ms-function-docs]: https://github.com/Microsoft/DataConnectors/blob/master/docs/function-docs.md
 [imkef-metadata]: http://www.thebiccountant.com/2017/05/11/how-to-edit-m-function-metadata/
 [ssbi-metadata]: https://ssbi-blog.de/technical-topics-english/writing-documentation-for-custom-m-functions-part1/
+[demo]: DocstringsDemo.png
