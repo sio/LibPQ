@@ -29,7 +29,7 @@ Hello world function (demo of LibPQ docstrings)
 
 Multiline docstrings are supported
 
-There is also support for <u>basic <b>HTML</b></u> formatting (implemented by
+There is also support for <i>basic <b>HTML</b></i> formatting (implemented by
 Power Query / PowerBI itself, this is not a LibPQ feature)
 
 LibPQ will also add information about the location of source code for this
