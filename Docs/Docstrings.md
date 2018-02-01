@@ -24,7 +24,7 @@ will become available via user interface. See example below.
 
 ## Docstring demo
 
-This function:
+This is a demo module `HelloWorld.pq`:
 ```javascript
 /*
 Hello world function (demo of LibPQ docstrings)
@@ -41,7 +41,7 @@ module, see below.
 (hello) => hello & " world!"
 ```
 
-Will show up in the UI like this:
+It will be shown in the UI like this:
 
 ![Docstring demonstration][demo]
 
