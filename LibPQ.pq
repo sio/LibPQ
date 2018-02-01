@@ -6,7 +6,7 @@ LibPQ:
 Project website:
     https://github.com/sio/LibPQ
 
-This code was last modified on 2018-01-28.
+This code was last modified on 2018-01-31
 
 Timestamp in docstring is necessary for further updating, because this code
 will be copied into the workbook and will be managed manually afterwards.
@@ -95,7 +95,7 @@ let
                 LibPQ.Docstring = Read.Docstring(SourceCode),
                 Documentation.Name = LibPQ.Module,
                 Documentation.Description =
-                    Text.Replace(LibPQ.Docstring, "#(cr)", "<br>") &
+                    Text.Replace(LibPQ.Docstring, "#(lf)", "<br>") &
                     DESCRIPTION_FOOTER(path)
             ],
             OldMetadata = Value.Metadata(LoadedObject),
