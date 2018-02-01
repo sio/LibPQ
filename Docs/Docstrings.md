@@ -20,7 +20,9 @@ A docstring for LibPQ is a comment that meets the following requirements:
 - There must be no nested delimited comments inside the docstring.
 
 Such comments will be automatically converted into proper metadata by LibPQ and
-will become available via user interface. See example below:
+will become available via user interface. See example below.
+
+## Docstring demo
 
 This function:
 ```javascript
