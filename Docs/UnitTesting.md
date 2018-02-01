@@ -76,9 +76,9 @@ module name or as the test suite record).
 Use [UnitTest.Discover][Discover] function to automatically discover and run
 all test suites from local sources.
 
-[Assert]: Modules/UnitTest.Assert.pq
-[Constants]: Modules/UnitTest.Constants.pq
-[Discover]: Modules/UnitTest.Discover.pq
-[Run]: Modules/UnitTest.Run.pq
-[Sample]: Samples/Tests.Sample.pq
-[Snippet]: Samples/Tests.Snippet.pq
+[Assert]: ../Modules/UnitTest.Assert.pq
+[Constants]: ../Modules/UnitTest.Constants.pq
+[Discover]: ../Modules/UnitTest.Discover.pq
+[Run]: ../Modules/UnitTest.Run.pq
+[Sample]: ../Samples/Tests.Sample.pq
+[Snippet]: ../Samples/Tests.Snippet.pq
