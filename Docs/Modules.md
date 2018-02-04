@@ -13,21 +13,21 @@ All modules are grouped into namespaces, much like the standard library:
 
 ## Date functions
 
-- **Date.IntervalFromText** -
+- **[Date.IntervalFromText]** -
   Given a string of text such as "Jan 2017 - Dec 2017" return a list of two
   dates corresponding to beginning and end of the interval
 
-- **Date.Parse** -
+- **[Date.Parse]** -
   Improved date parser for strings containing dates in unspecified format
 
 ## Factory functions
 
-- **Factory.Comparer** -
+- **[Factory.Comparer]** -
   Factory for creating comparison functions from conditions provided as text
 
 ## List functions
 
-- **List.UseLastValid** -
+- **[List.UseLastValid]** -
   Validate all items in the input list and replace the invalid ones with the
   previous valid value.
 
@@ -61,12 +61,12 @@ All modules are grouped into namespaces, much like the standard library:
 
 ## Read functions
 
-- **Read.CSV** -
+- **[Read.CSV]** -
   Load arbitrary CSV file with unknown number of columns (up to 1000) and
   unknown number of extra lines before the column names (first column name has
   to be known)
 
-- **Read.Parameter** -
+- **[Read.Parameter]** -
   Fetch parameter value from a data table in current workbook
 
 - **Read.Text** -
@@ -74,14 +74,14 @@ All modules are grouped into namespaces, much like the standard library:
 
 ## Table functions
 
-- **Table.ConcatenateRows** -
+- **[Table.ConcatenateRows]** -
   Add all columns from tableB to tableA (with values)
 
-- **Table.CountDuplicates** -
+- **[Table.CountDuplicates]** -
   Add a column to a table that will show the number of rows that contain the
   same value of key field as the current row.
 
-- **Table.UseLastValid** -
+- **[Table.UseLastValid]** -
   Validate all rows in the input table and replace the invalid ones with the
   previous valid value.
 
@@ -91,3 +91,19 @@ All modules are grouped into namespaces, much like the standard library:
   more...][unittesting]
 
 [unittesting]: UnitTesting.md
+
+[Date.IntervalFromText]: ../Modules/Date.IntervalFromText.pq
+[Date.Parse]: ../Modules/Date.Parse.pq
+[Factory.Comparer]: ../Modules/Factory.Comparer.pq
+[List.UseLastValid]: ../Modules/List.UseLastValid.pq
+[Read.CSV]: ../Modules/Read.CSV.pq
+[Read.Parameter]: ../Modules/Read.Parameter.pq
+[Table.ConcatenateRows]: ../Modules/Table.ConcatenateRows.pq
+[Table.CountDuplicates]: ../Modules/Table.CountDuplicates.pq
+[Table.UseLastValid]: ../Modules/Table.UseLastValid.pq
+[Tests.ConcatenateRows]: ../Modules/Tests.ConcatenateRows.pq
+[Tests.UseLastValid]: ../Modules/Tests.UseLastValid.pq
+[UnitTest.Assert]: ../Modules/UnitTest.Assert.pq
+[UnitTest.Constants]: ../Modules/UnitTest.Constants.pq
+[UnitTest.Discover]: ../Modules/UnitTest.Discover.pq
+[UnitTest.Run]: ../Modules/UnitTest.Run.pq
