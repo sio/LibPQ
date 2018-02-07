@@ -3,7 +3,6 @@ Transform selected columns' type to number, replace null values with zeros
 **/
 
 // TODO
-// - add to module list in Docs/
 // - write unit tests
 // - test non-number values
 

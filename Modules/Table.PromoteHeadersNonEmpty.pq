@@ -6,7 +6,6 @@ For simpler use cases check built-in function `Table.PromoteHeaders`
 **/
 
 // TODO
-// - add to module list in Docs/
 // - write unit tests
 // - test non-text values
 
