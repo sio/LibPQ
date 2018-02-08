@@ -35,8 +35,11 @@ Unit tests for Table.NumberColumns
         ),
 
     testInvalidInput = () =>
-        Assert[True](
-            Table.NumberColumns(BadInput, Table.ColumnNames(BadInput)) <> null
+        Assert[False](
+            (
+                try Table.NumberColumns(BadInput, Table.ColumnNames(BadInput))
+            )[HasError]
+            // error will be stored in table cell, the table itself will be ok
         ),
 
     /** Import assertion functions **/
