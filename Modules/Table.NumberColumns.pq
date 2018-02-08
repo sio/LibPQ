@@ -2,10 +2,6 @@
 Transform selected columns' type to number, replace null values with zeros
 **/
 
-// TODO
-// - write unit tests
-// - test non-number values
-
 (table as table, columns as list) as table =>
 let
     NumberTypes = List.Repeat({type number}, List.Count(columns)),
