@@ -10,7 +10,9 @@ Unit tests for Table.PromoteHeadersNonEmpty
         {
             {"hello","",null},
             {"","world",0},
-            {"",null,"LibPQ"}
+            {"",null,"LibPQ"},
+            {10,20,123}, // these values need to be checked too
+            {0,0,{1,2,3}}
         }
     ),
     Headers = [
