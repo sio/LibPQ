@@ -16,6 +16,26 @@ A sample test suite written for LibPQ
         in
             Return,
 
+    /** Subtests - simple demonstration **/
+    testSubtestDemoSuccess = {
+        () => Assert[True](1=1),
+        () => Assert[True](1=1),
+        () => Assert[True](1=1),
+        () => Assert[True](1=1)
+    },
+    testSubtestDemoFail = {
+        () => Assert[True](1=1),
+        () => Assert[True](1=1),
+        () => Assert[True](1=0),
+        () => Assert[True](1=1)
+    },
+    testSubtestDemoError = {
+        () => Assert[True](1=1),
+        () => Assert[True](1=1),
+        () => Assert[True]("hello" & 1),
+        () => Assert[True](1=1)
+    },
+
     /**
     This is not a test. Unless it's referenced within a valid test, this
     code will never be executed
