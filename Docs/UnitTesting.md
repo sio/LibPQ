@@ -8,6 +8,7 @@ modules:
 - **[UnitTest.Discover][Discover]** - discover and run unit tests from all
   local sources
 - **[UnitTest.Run][Run]** - runner for individual test suites
+- **[UnitTest.Subtests][Subtests]** - helper function for writing subtests
 
 # Writing tests
 
