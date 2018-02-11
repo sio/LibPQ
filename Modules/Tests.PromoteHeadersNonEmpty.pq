@@ -4,6 +4,7 @@ Unit tests for Table.PromoteHeadersNonEmpty
 
 [
     Table.PromoteHeadersNonEmpty = LibPQ("Table.PromoteHeadersNonEmpty"),
+    UnitTest.Subtests = LibPQ("UnitTest.Subtests"),
 
     Input = #table(
         {"foo","bar","baz"},
@@ -11,35 +12,48 @@ Unit tests for Table.PromoteHeadersNonEmpty
             {"hello","",null},
             {"","world",0},
             {"",null,"LibPQ"},
-            {10,20,123}, // these values need to be checked too
+            {10,20,123}
+        }
+    ),
+    Headers = {
+        {"hello", "bar", "baz"},
+        {"hello", "world", "baz"},
+        {"hello", "world", "LibPQ"},
+        {"10","20","123"}
+    },
+    Runs = List.Skip(
+        List.Generate(
+            () => [
+                i = -1,
+                header = null,
+                table = Input
+            ],
+            each [i] < List.Count(Headers),
+            each [
+                i = [i] + 1,
+                header = Table.ColumnNames(table),
+                table = Table.PromoteHeadersNonEmpty([table])
+            ],
+            each [header]
+        ),
+        1
+    ),
+
+    testCorrectHeaders = UnitTest.Subtests(
+        (calculated, correct) => () => Assert[Equal](calculated, correct),
+        List.Zip({Headers, Runs})
+    ),
+
+    BadInput = #table(
+        {"foo","bar","baz"},
+        {
             {0,0,{1,2,3}}
         }
     ),
-    Headers = [
-        First = {"hello", "bar", "baz"},
-        Second = {"hello", "world", "baz"},
-        Third = {"hello", "world", "LibPQ"}
-    ],
-    Runs = [
-        First = Table.PromoteHeadersNonEmpty(Input),
-        Second = Table.PromoteHeadersNonEmpty(First),
-        Third = Table.PromoteHeadersNonEmpty(Second)
-    ],
-
-    testFirstInvocation = () =>
-        Assert[Equal](
-            Table.ColumnNames(Runs[First]),
-            Headers[First]
-        ),
-    testSecondInvocation = () =>
-        Assert[Equal](
-            Table.ColumnNames(Runs[Second]),
-            Headers[Second]
-        ),
-    testThirdInvocation = () =>
-        Assert[Equal](
-            Table.ColumnNames(Runs[Third]),
-            Headers[Third]
+    testBadInput = () =>
+        Assert[Raises](
+            () => Table.PromoteHeadersNonEmpty(BadInput),
+            "Expression.Error"
         ),
 
     /** Import assertion functions **/
