@@ -81,6 +81,13 @@ All modules are grouped into namespaces, much like the standard library:
   Add a column to a table that will show the number of rows that contain the
   same value of key field as the current row.
 
+- **[Table.NumberColumns]** -
+  Transform selected columns' type to number, replace null values with zeros.
+
+- **[Table.PromoteHeadersNonEmpty]** -
+  Promote the first table row as column names, but keep the current header
+  if the value in the first row is empty.
+
 - **[Table.UseLastValid]** -
   Validate all rows in the input table and replace the invalid ones with the
   previous valid value.
@@ -100,6 +107,8 @@ All modules are grouped into namespaces, much like the standard library:
 [Read.Parameter]: ../Modules/Read.Parameter.pq
 [Table.ConcatenateRows]: ../Modules/Table.ConcatenateRows.pq
 [Table.CountDuplicates]: ../Modules/Table.CountDuplicates.pq
+[Table.NumberColumns]: ../Modules/Table.NumberColumns.pq
+[Table.PromoteHeadersNonEmpty]: ../Modules/Table.PromoteHeadersNonEmpty.pq
 [Table.UseLastValid]: ../Modules/Table.UseLastValid.pq
 [Tests.ConcatenateRows]: ../Modules/Tests.ConcatenateRows.pq
 [Tests.UseLastValid]: ../Modules/Tests.UseLastValid.pq

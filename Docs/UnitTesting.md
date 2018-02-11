@@ -8,6 +8,7 @@ modules:
 - **[UnitTest.Discover][Discover]** - discover and run unit tests from all
   local sources
 - **[UnitTest.Run][Run]** - runner for individual test suites
+- **[UnitTest.Subtests][Subtests]** - helper function for writing subtests
 
 # Writing tests
 
@@ -53,6 +54,17 @@ Each of the functions in that module is a valid test function that tests some
 simple assertion. You can use them as building blocks for writing your own
 tests.
 
+## Subtests
+
+When you need to run the same tests against slightly different parameters
+writing all the variations one by one can become tedious.
+
+LibPQ will treat a list of test functions that are stored in the same test
+suite field as a group of subtests. It will execute them until an error occurs,
+and that error will be treated as the test result.
+
+There is also a [helper function][Subtests] that simplifies creating subtests.
+
 ## Test fixtures
 
 At this moment there are no special tools for defining and invoking test
@@ -81,4 +93,5 @@ all test suites from local sources.
 [Discover]: ../Modules/UnitTest.Discover.pq
 [Run]: ../Modules/UnitTest.Run.pq
 [Sample]: ../Samples/Tests.Sample.pq
+[Subtests]: ../Modules/UnitTest.Subtests.pq
 [Snippet]: ../Samples/Tests.Snippet.pq
