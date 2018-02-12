@@ -9,13 +9,13 @@ Unit tests for List.UseLastValid and Table.UseLastValid
     input  = {1,0,2,0,3,0,0,4,5},
     output = {1,1,2,2,3,3,3,4,5},
 
-    testList = () =>
+    testList =
         Assert[Equal](
             List.UseLastValid(input, each _ > 0),
             output
         ),
 
-    testTable = () =>
+    testTable =
         Assert[Equal](
             Table.UseLastValid(
                 Table.FromColumns({input}, {"Number"}),

@@ -28,13 +28,13 @@ Unit tests for Table.NumberColumns
         }
     ),
 
-    testTransormation = () =>
+    testTransormation =
         Assert[Equal](
             Table.NumberColumns(Input, Table.ColumnNames(Input)),
             Output
         ),
 
-    testInvalidInput = () =>
+    testInvalidInput =
         Assert[False](
             (
                 try Table.NumberColumns(BadInput, Table.ColumnNames(BadInput))

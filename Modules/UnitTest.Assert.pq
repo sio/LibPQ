@@ -16,6 +16,7 @@ Calling an assertion function results in one of three outcomes:
 
     /** Basic assertion function. Check if expression is true **/
     True = (expression, optional message as nullable text, optional detail) =>
+        () =>
         let
             Message = if message = null then "value is not true" else message,
             Detail = if detail = null then expression else detail,

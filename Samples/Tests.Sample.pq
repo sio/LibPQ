@@ -4,10 +4,10 @@ A sample test suite written for LibPQ
 
 [
     /** This is a unit test that will always pass**/
-    testOne = () => Assert[True](1=1),
+    testOne = Assert[True](1=1),
 
     /** This is another test, it will always fail **/
-    testAnother = () => Assert[True](1=0),
+    testAnother = Assert[True](1=0),
 
     /** This test has an error in its code **/
     testWithError = () =>
@@ -18,22 +18,22 @@ A sample test suite written for LibPQ
 
     /** Subtests - simple demonstration **/
     testSubtestDemoSuccess = {
-        () => Assert[True](1=1),
-        () => Assert[True](1=1),
-        () => Assert[True](1=1),
-        () => Assert[True](1=1)
+        Assert[True](1=1),
+        Assert[True](1=1),
+        Assert[True](1=1),
+        Assert[True](1=1)
     },
     testSubtestDemoFail = {
-        () => Assert[True](1=1),
-        () => Assert[True](1=1),
-        () => Assert[True](1=0),
-        () => Assert[True](1=1)
+        Assert[True](1=1),
+        Assert[True](1=1),
+        Assert[True](1=0),
+        Assert[True](1=1)
     },
     testSubtestDemoError = {
-        () => Assert[True](1=1),
-        () => Assert[True](1=1),
-        () => Assert[True]("hello" & 1),
-        () => Assert[True](1=1)
+        Assert[True](1=1),
+        Assert[True](1=1),
+        Assert[True]("hello" & 1),
+        Assert[True](1=1)
     },
 
     /**

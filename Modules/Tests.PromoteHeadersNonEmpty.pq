@@ -40,7 +40,7 @@ Unit tests for Table.PromoteHeadersNonEmpty
     ),
 
     testCorrectHeaders = UnitTest.Subtests(
-        (calculated, correct) => () => Assert[Equal](calculated, correct),
+        (calculated, correct) => Assert[Equal](calculated, correct),
         List.Zip({Headers, Runs})
     ),
 
@@ -50,7 +50,7 @@ Unit tests for Table.PromoteHeadersNonEmpty
             {0,0,{1,2,3}}
         }
     ),
-    testBadInput = () =>
+    testBadInput =
         Assert[Raises](
             () => Table.PromoteHeadersNonEmpty(BadInput),
             "Expression.Error"

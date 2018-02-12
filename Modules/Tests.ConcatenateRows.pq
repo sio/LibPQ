@@ -14,13 +14,13 @@ Unit tests for Table.ConcatenateRows
     TableTwo   = Table.FromColumns({data, data}, List.FirstN(headers, 2)),
     TableThree = Table.FromColumns({data, data, data}, {headers{2}, headers{0}, headers{1}}),
 
-    testTwoOneColumnTables = () =>
+    testTwoOneColumnTables =
         Assert[Equal](
             Table.ConcatenateRows(TableOneA, TableOneB),
             TableTwo
         ),
 
-    testOneColumnAndTwoColumnCombined = () =>
+    testOneColumnAndTwoColumnCombined =
         Assert[Equal](
             Table.ConcatenateRows(TableOneC, TableTwo),
             TableThree
