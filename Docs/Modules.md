@@ -3,6 +3,7 @@ All modules are grouped into namespaces, much like the standard library:
 
 - **Date** - Functions for working with dates
 - **Factory** - Functions that create other functions
+- **Folder** - Functions for manupulating folders and their contents
 - **List** - Functions for working with lists
 - **Module** - LibPQ tools for importing source code
 - **Read** - Functions that import data
@@ -24,6 +25,12 @@ All modules are grouped into namespaces, much like the standard library:
 
 - **[Factory.Comparer]** -
   Factory for creating comparison functions from conditions provided as text
+
+## Folder functions
+
+- **[Folder.Latest]** -
+  Get the path of the newest subdirectory or file in the given folder. Supports
+  custom sort order and filter functions.
 
 ## List functions
 
@@ -102,6 +109,7 @@ All modules are grouped into namespaces, much like the standard library:
 [Date.IntervalFromText]: ../Modules/Date.IntervalFromText.pq
 [Date.Parse]: ../Modules/Date.Parse.pq
 [Factory.Comparer]: ../Modules/Factory.Comparer.pq
+[Folder.Latest]: ../Modules/Folder.Latest.pq
 [List.UseLastValid]: ../Modules/List.UseLastValid.pq
 [Read.CSV]: ../Modules/Read.CSV.pq
 [Read.Parameter]: ../Modules/Read.Parameter.pq

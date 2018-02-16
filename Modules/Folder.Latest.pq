@@ -20,7 +20,6 @@ optional third argument to provide a different sort order:
 
 // TODO:
 // - unit tests (how?)
-// - add to module list
 
 (directory as text, optional requirements as function, optional sort_field) =>
 let
