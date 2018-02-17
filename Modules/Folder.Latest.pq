@@ -18,9 +18,6 @@ optional third argument to provide a different sort order:
       acceptable.
 **/
 
-// TODO:
-// - unit tests (how?)
-
 (directory as text, optional requirements as function, optional sort_field) =>
 let
     DefaultFilter = each [Attributes][Kind] = "Folder",
