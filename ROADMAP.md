@@ -1,4 +1,4 @@
-# LibPQ TODO list
+# Plans and ideas for LibPQ development
 
 ## Release 1.0 roadmap
 - Fix issue #7
@@ -19,4 +19,3 @@
         - Removed
         - Fixed
         - Security
-
