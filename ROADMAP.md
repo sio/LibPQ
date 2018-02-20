@@ -14,8 +14,8 @@ Current goals and values (in order of descending importance) are:
   use, and we should not interfere with the code they've built upon ours. This
   applies most strictly to the loader and the modules essential for internal
   use (e.g. UnitTest framework), other modules may see some breaking changes in
-  future (that must always be documented in [release notes] and must be reflected
-  in the release [version number][SemVer]).
+  future (that must always be documented in [release notes](RELEASES.md) and
+  must be reflected in the release [version number](https://semver.org/)).
 - **Improving import-time user experience**. LibPQ already offers local module
   listing, parses module docstrings for viewing in the UI and correctly relays
   errors in modules' code, but there must be other methods to improve module
@@ -34,23 +34,3 @@ Current goals and values (in order of descending importance) are:
 ## Release 1.0 roadmap
 - Fix issue #7
 - Add release notes (markdown file, in root directory)
-    - File name: RELEASES or CHANGELOG?
-    - Keep release dates
-    - Link git commit range
-    - Newest releases on top of the file, [Unreleased] section for changes
-      after the last release
-    - Add a short description on top
-        - Mention that the project follows semantic versioning https://semver.org/
-        - Link to http://keepachangelog.com
-    - Structured description
-    - Release notes sections:
-        - Added (features and improvements)
-        - Changed
-        - Deprecated
-        - Removed
-        - Fixed
-        - Security
-
-
-[SemVer]: https://semver.org/
-[release notes]: RELEASES.md
