@@ -31,6 +31,17 @@ Current goals and values (in order of descending importance) are:
   separate project that relies on LibPQ for importing the source code.
 
 
+## Roadmap to the next release (probably 1.1.0)
+
+There are no explicit plans for new features yet. This section will be futher
+updated in the development process.
+
+If no critical bugs are discovered and no breaking changes arrive with Power
+Query updates, the next (minor) release is scheduled for the Summer of 2018.
+Most likely it will contain some additions to the collection of modules and
+some minor polishing touches to the import-time user experience.
+
+
 ## Release 1.0 roadmap
 - Fix issue #7
 - Add release notes (markdown file, in root directory)
