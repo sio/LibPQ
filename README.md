@@ -13,8 +13,12 @@ code from external modules into Power Query.
 - A collection of general purpose [functions and queries][modules]
 - Compatibility with [@tycho01's library][tycho01]
 
-Introductory overview is available at [author's blog][intro].
-[Documentation][docs] describes some more specific use cases.
+### More information
+
+- Introductory overview is available at [author's blog][intro]
+- [Documentation][docs] describes some more specific use cases
+- [Release notes](RELEASES.md) contain important information on latest LibPQ changes
+- [Roadmap](ROADMAP.md) describes project vision and plans for the future
 
 [intro]: https://potyarkin.ml/posts/2018/expanding-power-query-standard-library-introducing-libpq/
 [tycho01]: https://github.com/tycho01/pquery
