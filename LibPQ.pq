@@ -6,7 +6,7 @@ LibPQ:
 Project website:
     https://github.com/sio/LibPQ
 
-This code was last modified on 2018-01-31
+This code was last modified on 2018-02-21
 
 Timestamp in docstring is necessary for further updating, because this code
 will be copied into the workbook and will be managed manually afterwards.
