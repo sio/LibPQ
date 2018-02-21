@@ -6,7 +6,7 @@ LibPQ:
 Project website:
     https://github.com/sio/LibPQ
 
-This code was last modified on 2018-01-31
+This code was last modified on 2018-02-21
 
 Timestamp in docstring is necessary for further updating, because this code
 will be copied into the workbook and will be managed manually afterwards.
@@ -99,14 +99,14 @@ let
                     DESCRIPTION_FOOTER(path)
             ],
             OldMetadata = Value.Metadata(LoadedObject),
-            NewMetadata = Record.Combine({ExtraMetadata, OldMetadata}),
+            TypeMetadata = Value.Metadata(Value.Type(LoadedObject)),
             Module = Value.ReplaceType(
                 LoadedObject,
                 Value.ReplaceMetadata(
                     Value.Type(LoadedObject),
-                    Record.Combine({ExtraMetadata, OldMetadata})
+                    Record.Combine({ExtraMetadata, TypeMetadata})
                 )
-            ) meta NewMetadata
+            ) meta Record.Combine({ExtraMetadata, OldMetadata})
         in
             Module,
 
