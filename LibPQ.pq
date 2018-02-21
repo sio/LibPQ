@@ -99,14 +99,14 @@ let
                     DESCRIPTION_FOOTER(path)
             ],
             OldMetadata = Value.Metadata(LoadedObject),
-            NewMetadata = Record.Combine({ExtraMetadata, OldMetadata}),
+            TypeMetadata = Value.Metadata(Value.Type(LoadedObject)),
             Module = Value.ReplaceType(
                 LoadedObject,
                 Value.ReplaceMetadata(
                     Value.Type(LoadedObject),
-                    Record.Combine({ExtraMetadata, OldMetadata})
+                    Record.Combine({ExtraMetadata, TypeMetadata})
                 )
-            ) meta NewMetadata
+            ) meta Record.Combine({ExtraMetadata, OldMetadata})
         in
             Module,
 
