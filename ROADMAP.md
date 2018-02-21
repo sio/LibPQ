@@ -40,8 +40,3 @@ If no critical bugs are discovered and no breaking changes arrive with Power
 Query updates, the next (minor) release is scheduled for the Summer of 2018.
 Most likely it will contain some additions to the collection of modules and
 some minor polishing touches to the import-time user experience.
-
-
-## Release 1.0 roadmap
-- Fix issue #7
-- Add release notes (markdown file, in root directory)

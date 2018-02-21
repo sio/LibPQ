@@ -11,7 +11,7 @@ changelog](http://keepachangelog.com) is important!
 ## Unreleased changes (currently in git `master`)
 -->
 
-## Version 1.0.0 (2018-02-#N/A)
+## Version 1.0.0 (2018-02-21)
 
 #### Git commit: `#n/a`
 
@@ -37,6 +37,3 @@ blog][intro].
 [modules]: Docs/Modules.md
 [tycho01]: https://github.com/tycho01/pquery
 [unittesting]: Docs/UnitTesting.md
-
-
-// TODO: update this stub with actual release date and commit hash
