@@ -13,7 +13,7 @@ changelog](http://keepachangelog.com) is important!
 
 ## Version 1.0.0 (2018-02-21)
 
-#### Git commit: `#n/a`
+#### Git commit: `ae988cddc0b0996019cc2ccf8a486a40524337d6`
 
 This is the first release of LibPQ. The library and the loader are considered
 feature full and stable.
