@@ -23,5 +23,15 @@ ImkeF implementation:
 
 (input as any, operations as list, debug as any) =>
 let
+    /*
+    Pseudo code sketch:
+
+    if
+        debug is null
+    then
+        List.Accumulate
+    else
+        List.Generate + Fancy names function => table
+    */
 in
     Return
