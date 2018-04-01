@@ -20,6 +20,10 @@ code from external modules into Power Query.
 - [Release notes](RELEASES.md) contain important information on latest LibPQ changes
 - [Roadmap](ROADMAP.md) describes project vision and plans for the future
 
+### What other people say about LibPQ
+
+- Roger Torné: [Reutilizar funciones en Power Query de Excel](http://blog.blauservices.com/?p=1963) (in Spanish)
+
 [intro]: https://potyarkin.ml/posts/2018/expanding-power-query-standard-library-introducing-libpq/
 [tycho01]: https://github.com/tycho01/pquery
 [docstrings]: Docs/Docstrings.md
