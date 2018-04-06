@@ -21,7 +21,7 @@ ImkeF implementation:
 
 */
 
-(input as any, operations as list, debug as any) =>
+(input as any, operations as list, optional debug as any) =>
 let
     /*
     Pseudo code sketch:
@@ -33,5 +33,11 @@ let
     else
         List.Generate + Fancy names function => table
     */
+    FastWay = List.Accumulate(
+        operations,
+        input,
+        (state, current) => Function.Invoke(current, {state})
+    ),
+    Return = FastWay
 in
     Return
