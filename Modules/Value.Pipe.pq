@@ -38,6 +38,31 @@ let
         input,
         (state, current) => Function.Invoke(current, {state})
     ),
-    Return = FastWay
+    VerboseWay = List.Reverse(
+        List.Accumulate(
+            operations,
+            {input},
+            (state, current) => {Function.Invoke(current, {state{0}})} & state
+        )
+    ),
+    VerboseResults = List.Skip(
+        List.Generate(
+            () => [
+                i = -1,
+                record = null
+            ],
+            each [i] < List.Count(VerboseWay),
+            each [
+                i = [i] + 1,
+                record = [
+                    Steps = "Step " & Text.From(i),
+                    Result = VerboseWay{i}
+                ]
+            ],
+            each [record]
+        )
+    ),
+
+    Return = if debug is null then FastWay else Table.FromRecords(VerboseResults)
 in
     Return

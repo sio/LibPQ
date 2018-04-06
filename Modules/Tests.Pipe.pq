@@ -40,6 +40,31 @@ Unit tests for Value.Pipe
         "Hello World"
     ),
 
+    /* Debug mode has to return the same output */
+    DebugAnswer = Value.Pipe(SampleSeed, SampleOps, "debug"),
+    testDebugValue = Assert[Equal](
+        List.Last(DebugAnswer[Result]),
+        CorrectAnswer
+    ),
+    testDebugCount = Assert[Equal](
+        List.Count(DebugAnswer[Result]),
+        List.Count(SampleOps) + 1
+    ),
+
+    RandomInputs = List.Random(10),
+    testRandomInputs = UnitTest.Subtests(
+        Assert[Equal],
+        List.Transform(
+            RandomInputs,
+            each {
+                // Compare results from debug and non-debug mode
+                Value.Pipe(_, SampleOps),
+                List.Last(Value.Pipe(_, SampleOps, "debug")[Result])
+            }
+        )
+    ),
+
     /** Import assertion functions **/
+    UnitTest.Subtests = LibPQ("UnitTest.Subtests"),
     Assert = LibPQ("UnitTest.Assert")
 ] meta [LibPQ.TestSuite = 1]
