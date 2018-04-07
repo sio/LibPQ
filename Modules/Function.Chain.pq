@@ -5,7 +5,9 @@ operation is the output from the previous one.
 Operations are to be provides as list of functions that take exactly one
 argument and return exactly one value of the same type.
 
-TODO: documentation!!!
+If the third optional argument is provided with a non-null value, debug mode is
+assumed: the function returns results for each interim step, formatted as a
+table.
 
 Inspired by Imke Feldmann:
     http://www.thebiccountant.com/2017/08/16/should-we-pipe-m/
@@ -25,16 +27,6 @@ ImkeF implementation:
 
 (input as any, operations as list, optional debug as any) =>
 let
-    /*
-    Pseudo code sketch:
-
-    if
-        debug is null
-    then
-        List.Accumulate
-    else
-        List.Generate + Fancy names function => table
-    */
     FastWay = List.Accumulate(
         operations,
         input,
