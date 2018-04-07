@@ -1,8 +1,8 @@
 /**
-Unit tests for Value.Pipe
+Unit tests for Function.Chain
 **/
 [
-    Value.Pipe = LibPQ("Value.Pipe"),
+    Function.Chain = LibPQ("Function.Chain"),
 
     /* Sequence of arithmetic operations */
     SampleSeed = 33,
@@ -14,11 +14,11 @@ Unit tests for Value.Pipe
     CorrectAnswer = 42,
 
     testPipeOK = Assert[Equal](
-        Value.Pipe(SampleSeed, SampleOps),
+        Function.Chain(SampleSeed, SampleOps),
         CorrectAnswer
     ),
     testPipeFail = Assert[NotEqual](
-        Value.Pipe(SampleSeed, SampleOps),
+        Function.Chain(SampleSeed, SampleOps),
         CorrectAnswer + 1
     ),
 
@@ -32,16 +32,16 @@ Unit tests for Value.Pipe
     StringAnswer = "LibPQ",
 
     testStringOK = Assert[Equal](
-        Value.Pipe(StringSeed, StringOps),
+        Function.Chain(StringSeed, StringOps),
         StringAnswer
     ),
     testStringFail = Assert[NotEqual](
-        Value.Pipe(StringSeed, StringOps),
+        Function.Chain(StringSeed, StringOps),
         "Hello World"
     ),
 
     /* Debug mode has to return the same output */
-    DebugAnswer = Value.Pipe(SampleSeed, SampleOps, "debug"),
+    DebugAnswer = Function.Chain(SampleSeed, SampleOps, "debug"),
     testDebugValue = Assert[Equal](
         List.Last(DebugAnswer[Result]),
         CorrectAnswer
@@ -58,8 +58,8 @@ Unit tests for Value.Pipe
             RandomInputs,
             each {
                 // Compare results from debug and non-debug mode
-                Value.Pipe(_, SampleOps),
-                List.Last(Value.Pipe(_, SampleOps, "debug")[Result])
+                Function.Chain(_, SampleOps),
+                List.Last(Function.Chain(_, SampleOps, "debug")[Result])
             }
         )
     ),
