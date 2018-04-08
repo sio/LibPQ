@@ -15,7 +15,8 @@ code from external modules into Power Query.
 
 ### More information
 
-- Introductory overview is available at [author's blog][intro]
+- [Introductory overview][intro] is available at author's blog
+  along with several [other articles](https://potyarkin.ml/tags/libpq/) on LibPQ
 - [Documentation][docs] describes some more specific use cases
 - [Release notes](RELEASES.md) contain important information on latest LibPQ changes
 - [Roadmap](ROADMAP.md) describes project vision and plans for the future
