@@ -4,6 +4,7 @@ All modules are grouped into namespaces, much like the standard library:
 - **Date** - Functions for working with dates
 - **Factory** - Functions that create other functions
 - **Folder** - Functions for manupulating folders and their contents
+- **Function** - Functions that operate on other functions
 - **List** - Functions for working with lists
 - **Module** - LibPQ tools for importing source code
 - **Read** - Functions that import data
@@ -31,6 +32,12 @@ All modules are grouped into namespaces, much like the standard library:
 - **[Folder.Latest]** -
   Get the path of the newest subdirectory or file in the given folder. Supports
   custom sort order and filter functions.
+
+## Function functions
+
+- **[Function.Chain]** -
+  Apply a sequence of operations to the input value. Input for each consecutive
+  operation is the output from the previous one.
 
 ## List functions
 
