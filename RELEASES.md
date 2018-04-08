@@ -11,8 +11,8 @@ changelog](http://keepachangelog.com) is important!
 
 **New modules**
 
-- [Function.Chain][Modules/Function.Chain.md] -
-  Apply a sequence of operations to the input value.
+- [Function.Chain](Modules/Function.Chain.pq) -
+  Apply a sequence of operations to the input value
 
 ## Version 1.0.0 (2018-02-21)
 
