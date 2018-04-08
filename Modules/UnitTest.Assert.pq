@@ -45,6 +45,15 @@ Calling an assertion function results in one of three outcomes:
         in
             Return,
 
+    /** Check if a and b are not equal **/
+    NotEqual = (a, b, optional message as nullable text, optional detail) =>
+        let
+            Message = if message = null then "values are equal" else message,
+            Detail = if detail = null then {a,b} else detail,
+            Return = False(a = b, Message, Detail)
+        in
+            Return,
+
     /** Check if zero-argument function raises error **/
     Raises = (func, reason as text, optional message as nullable text, optional detail) =>
         let
