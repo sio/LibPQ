@@ -7,9 +7,12 @@ specification.
 This document describes the changes between releases of LibPQ. [Keeping a
 changelog](http://keepachangelog.com) is important!
 
-<!--
 ## Unreleased changes (currently in git `master`)
--->
+
+**New modules**
+
+- [Function.Chain][Modules/Function.Chain.md] -
+  Apply a sequence of operations to the input value.
 
 ## Version 1.0.0 (2018-02-21)
 

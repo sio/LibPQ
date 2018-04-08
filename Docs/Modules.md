@@ -117,6 +117,7 @@ All modules are grouped into namespaces, much like the standard library:
 [Date.Parse]: ../Modules/Date.Parse.pq
 [Factory.Comparer]: ../Modules/Factory.Comparer.pq
 [Folder.Latest]: ../Modules/Folder.Latest.pq
+[Function.Chain]: ../Modules/Function.Chain.pq
 [List.UseLastValid]: ../Modules/List.UseLastValid.pq
 [Read.CSV]: ../Modules/Read.CSV.pq
 [Read.Parameter]: ../Modules/Read.Parameter.pq
