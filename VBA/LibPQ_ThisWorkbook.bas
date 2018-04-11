@@ -20,3 +20,31 @@ Public Function ReplaceQuery(name As String, code As String)
 
     Set ReplaceQuery = Query
 End Function
+
+
+Public Function MakeRecord(Keys, Values) As String
+' Translate collections (or arrays) of keys and values into Power Query M Language record
+    Dim i
+    Dim IndexStart As Long
+    Dim IndexEnd As Long
+
+    IndexStart = -1
+    IndexEnd = -1
+    On Error Resume Next
+        ' try array
+        IndexStart = LBound(Keys)
+        IndexEnd = UBound(Keys)
+    On Error GoTo 0
+    If IndexStart = -1 Or IndexEnd = -1 Then
+        ' if not array then it's a collection
+        IndexStart = 1
+        IndexEnd = Keys.Count
+    End If
+
+    MakeRecord = "["
+    For i = IndexStart To IndexEnd
+        MakeRecord = MakeRecord & vbCrLf & "    " & CStr(Keys(i)) & " = " & """" & CStr(Values(i)) & """"
+        If i <> IndexEnd Then MakeRecord = MakeRecord & ","
+    Next
+    MakeRecord = MakeRecord & vbCrLf & "]"
+End Function
