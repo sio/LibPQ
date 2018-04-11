@@ -9,6 +9,11 @@ changelog](http://keepachangelog.com) is important!
 
 ## Unreleased changes (currently in git `master`)
 
+**New features**
+
+- New assertion function `NotEqual` in
+  [UnitTest.Assert](Modules/UnitTest.Assert.pq)
+
 **New modules**
 
 - [Function.Chain](Modules/Function.Chain.pq) -
