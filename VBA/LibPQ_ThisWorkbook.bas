@@ -1,5 +1,14 @@
 Attribute VB_Name = "LibPQ_ThisWorkbook"
 Option Explicit
+'
+' This module allows you to access metadata about current workbook from Power
+' Query.
+'
+' To create the record with neccessary data, run `LibPQ_UpdateThisWorkbook`
+'
+' To update workbook information automatically call that macro from
+' `Workbook_Open` event
+'
 
 
 Public Sub LibPQ_UpdateThisWorkbook()
