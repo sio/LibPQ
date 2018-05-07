@@ -1,4 +1,4 @@
-# LibPQ - a collection of reusable modules for Power Query M Language
+# LibPQ - detach your M code from workbooks and reuse it!
 
 This project offers a collection of functions and useful queries for Power
 Query Formula Language (also known as M language) and a loader to import source
