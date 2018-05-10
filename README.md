@@ -24,6 +24,9 @@ code from external modules into Power Query.
 ### What other people say about LibPQ
 
 - Roger Torné: [Reutilizar funciones en Power Query de Excel](http://blog.blauservices.com/?p=1963) (in Spanish)
+- Twitter highlights:
+    [Jay Killeen](https://twitter.com/jaykilleen/status/959979020245917696),
+    [Maxim Zelensky](https://twitter.com/Hohlick/status/960030006750703616)
 
 [intro]: https://potyarkin.ml/posts/2018/expanding-power-query-standard-library-introducing-libpq/
 [tycho01]: https://github.com/tycho01/pquery
