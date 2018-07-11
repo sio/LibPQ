@@ -13,6 +13,8 @@ changelog](http://keepachangelog.com) is important!
 
 - New assertion function `NotEqual` in
   [UnitTest.Assert](Modules/UnitTest.Assert.pq)
+- [VBA helper module](VBA/LibPQ_ThisWorkbook.bas) that simplifies access to the
+  metadata about the current workbook
 
 **New modules**
 
