@@ -7,7 +7,23 @@ specification.
 This document describes the changes between releases of LibPQ. [Keeping a
 changelog](http://keepachangelog.com) is important!
 
-## Unreleased changes (currently in git `master`)
+Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
+
+<!--
+## Unreleased changes (currently in git master)
+-->
+
+
+
+## Version 1.1.0 (2018-07-11)
+
+#### Git commit: this one
+
+This release adds a few minor features.
+
+The library has been around for half a year already. The author has been using
+it regularly to create new reports and refresh existing ones, no significant
+issues had arisen. The project is considered suitable for daily use.
 
 **New features**
 
@@ -21,9 +37,11 @@ changelog](http://keepachangelog.com) is important!
 - [Function.Chain](Modules/Function.Chain.pq) -
   Apply a sequence of operations to the input value
 
+
+
 ## Version 1.0.0 (2018-02-21)
 
-#### Git commit: `ae988cddc0b0996019cc2ccf8a486a40524337d6`
+#### Git commit: ae988cddc0b0996019cc2ccf8a486a40524337d6
 
 This is the first release of LibPQ. The library and the loader are considered
 feature full and stable.
