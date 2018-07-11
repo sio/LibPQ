@@ -17,7 +17,7 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
 ## Version 1.1.0 (2018-07-11)
 
-#### Git commit: this one
+#### Git commit: 4aa1b5e522f72e90083f9335444e610326e3b737
 
 This release adds a few minor features.
 
