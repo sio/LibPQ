@@ -4,9 +4,9 @@ functions or may be referenced by its module name
 
 Return a table of test results
 **/
-(suite_name as nullable text, optional suite) =>
+(suite) =>
 let
-    Suite = if suite = null then LibPQ(suite_name) else suite,
+    Suite = if Value.Is(suite, type text) then LibPQ(suite) else suite,
 
     /* Load constants */
     Config = LibPQ("UnitTest.Constants"),

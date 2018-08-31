@@ -22,6 +22,6 @@ let
                 Assert[True](fact[expected] = fact[actual])
             )
     ),
-    Result = UnitTest.Run(null, Tests)
+    Result = UnitTest.Run(Tests)
 in
     Result

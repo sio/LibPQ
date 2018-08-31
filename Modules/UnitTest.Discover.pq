@@ -14,27 +14,41 @@ let
     UnitTest.Run = LibPQ("UnitTest.Run"),
 
     SuitesFilter = Table.SelectRows(
-        Record.ToTable(Library),
-        each (
-            try
-                Record.Field(
-                    Value.Metadata([Value]),
-                    Config[Suite.MetaField]
-                )
-            otherwise
-                null
-        ) = Config[Suite.MetaValue]
+        Table.AddColumn(
+            Record.ToTable(Library),
+            "SuiteVersion",
+            each
+                try Text.From(
+                    Record.Field(
+                        Value.Metadata([Value]),
+                        Config[Suite.MetaField]
+                    )
+                ) otherwise
+                    null
+        ),
+        each [SuiteVersion] <> null
     ),
     Suites = Table.RenameColumns(
         SuitesFilter,
         List.Zip({
             Table.ColumnNames(SuitesFilter),
-            {"Suite", "Object"}
+            {"Suite", "Object", "Version"}
         })
     ),
-    Run = Table.AddColumn(Suites, "Results", each UnitTest.Run(null, [Object])),
+    SuiteRunners = Record.FromList(
+        List.Transform(
+            Record.FieldValues(Config[Suite.Runners]),
+            each LibPQ(_)
+        ),
+        Record.FieldNames(Config[Suite.Runners])
+    ),
+    Run = Table.AddColumn(
+        Suites,
+        "Results",
+        each Record.Field(SuiteRunners, [Version])([Object])
+    ),
     Expanded = Table.ExpandTableColumn(
-        Run,
+        Table.RemoveColumns(Run, "Version"),
         "Results",
         Table.ColumnNames(Run[Results]{0})
     ),
