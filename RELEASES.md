@@ -9,10 +9,11 @@ changelog](http://keepachangelog.com) is important!
 
 Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
-<!--
 ## Unreleased changes (currently in git master)
--->
 
+**New features**
+
+- Added support for [fact based unit tests](Docs/UnitTesting_with_Facts.md)
 
 
 ## Version 1.1.0 (2018-07-11)
