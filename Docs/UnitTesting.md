@@ -88,6 +88,14 @@ module name or as the test suite record).
 Use [UnitTest.Discover][Discover] function to automatically discover and run
 all test suites from local sources.
 
+# Fact based unit tests
+
+If you are familiar with [fact based unit tests][Microsoft Unit Testing] (as
+shown in Microsoft documentation) you can continue to use that approach with
+LibPQ UnitTest framework. Integrating existing fact based test suites will
+require some extra code, but the tests themselves need no modification. See
+[this article][Fact based tests] for more information.
+
 [Assert]: ../Modules/UnitTest.Assert.pq
 [Constants]: ../Modules/UnitTest.Constants.pq
 [Discover]: ../Modules/UnitTest.Discover.pq
@@ -95,3 +103,5 @@ all test suites from local sources.
 [Sample]: ../Samples/Tests.Sample.pq
 [Subtests]: ../Modules/UnitTest.Subtests.pq
 [Snippet]: ../Samples/Tests.Snippet.pq
+[Microsoft Unit Testing]: https://docs.microsoft.com/en-us/power-query/handlingunittesting
+[Fact based tests]: UnitTesting_with_Facts.md
