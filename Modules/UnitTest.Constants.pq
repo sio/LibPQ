@@ -13,5 +13,5 @@ Constants for LibPQ UnitTest framework
     Suite.Runners = [
         1 = "UnitTest.Run",
         Facts = "UnitTest.Facts.Summarize"
-    ],
+    ]
 ]
