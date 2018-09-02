@@ -10,5 +10,8 @@ Constants for LibPQ UnitTest framework
 
     /* Metadata field that indicates the record is LibPQ test suite */
     Suite.MetaField = "LibPQ.TestSuite",
-    Suite.MetaValue = 1
+    Suite.Runners = [
+        1 = "UnitTest.Run",
+        Facts = "UnitTest.Facts.Summarize"
+    ]
 ]

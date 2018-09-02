@@ -2,10 +2,7 @@
 
 ## Table of contents
 
-- [List of LibPQ modules][modules]
-- [Unit testing in Power Query with LibPQ][unittesting]
-- [Docstrings in LibPQ][docstrings]
-
-[docstrings]: Docstrings.md
-[modules]: Modules.md
-[unittesting]: UnitTesting.md
+- [List of LibPQ modules](Modules.md)
+- [Unit testing in Power Query with LibPQ](UnitTesting.md)
+    - [Support for fact based tests](UnitTesting_with_Facts.md)
+- [Docstrings in LibPQ](Docstrings.md)
