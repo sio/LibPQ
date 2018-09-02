@@ -11,6 +11,7 @@ More information: https://docs.microsoft.com/en-us/power-query/handlingunittesti
 let
     UnitTest.Run = LibPQ("UnitTest.Run"),
     Assert = LibPQ("UnitTest.Assert"),
+    Config = LibPQ("UnitTest.Constants"),
 
     Tests = List.Accumulate(
         facts,
@@ -18,8 +19,8 @@ let
         (collection, fact) =>
             Record.AddField(
                 collection,
-                "test - " & fact[name],
-                Assert[True](fact[expected] = fact[actual])
+                Config[Test.Prefix] & " - " & fact[name],
+                Assert[Equal](fact[expected], fact[actual])
             )
     ),
     Result = UnitTest.Run(Tests)
