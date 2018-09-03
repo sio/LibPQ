@@ -82,11 +82,22 @@ Check the code of [sample][Sample] test suite and the test suite
 
 ## Running tests and test discovery
 
-Use [UnitTest.Run][Run] function to run individual test suites (passed by
-module name or as the test suite record).
+*Test runner* is a function that runs a single test suite (provided as the
+only argument) and returns test results as a table. [UnitTest.Run][Run] is a
+reference implementation of a test runner, use it to run individual test
+suites.
 
-Use [UnitTest.Discover][Discover] function to automatically discover and run
-all test suites from local sources.
+[UnitTest.Discover][Discover] is a function that automatically discovers and
+runs all test suites from local sources. Test discovery details:
+
+- Test suites have to be stored in separate LibPQ modules that contain
+  metadata referring to the test suite version (value of `LibPQ.TestSuite`
+  meta field).
+- Each test is executed with corresponding test runner, test result tables are
+  combined into a single output table (see the [reference test runner][Run]
+  for the table structure of test results).
+- Test runners are assigned to test suite versions in the
+  [UnitTest.Constants][Constants] module.
 
 ## Fact based unit tests
 

@@ -11,6 +11,11 @@ Constants for LibPQ UnitTest framework
     /* Metadata field that indicates the record is LibPQ test suite */
     Suite.MetaField = "LibPQ.TestSuite",
     Suite.Runners = [
+        // [test suite version : test runner module name]
+        //
+        // Test runner is a function that takes one argument (test suite),
+        // runs it and returns test results as a table structured the same as
+        // the output of UnitTest.Run (reference test runner)
         1 = "UnitTest.Run",
         Facts = "UnitTest.Facts.Summarize"
     ]

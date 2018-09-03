@@ -13,7 +13,12 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
 **New features**
 
-- Added support for [fact based unit tests](Docs/UnitTesting_with_Facts.md)
+- Support for [fact based unit tests](Docs/UnitTesting_with_Facts.md)
+- Support unlimited number of test runners for different test suite types with
+  [UnitTest.Discover](Modules/UnitTest.Discover.pq). Runner is determined
+  based on the value of `LibPQ.TestSuite` meta field. Test runners have to be
+  API compatible with the reference implementation
+  ([UnitTest.Run](Modules/UnitTest.Run.pq))
 
 
 ## Version 1.1.0 (2018-07-11)
