@@ -11,7 +11,7 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
 ## Unreleased changes (currently in git master)
 
-**New features**
+#### New features
 
 - Support for [fact based unit tests](Docs/UnitTesting_with_Facts.md)
 - Support unlimited number of test runners for different test suite types with
@@ -19,6 +19,7 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
   based on the value of `LibPQ.TestSuite` meta field. Test runners have to be
   API compatible with the reference implementation
   ([UnitTest.Run](Modules/UnitTest.Run.pq))
+
 
 
 ## Version 1.1.0 (2018-07-11)
@@ -31,14 +32,14 @@ The library has been around for half a year already. The author has been using
 it regularly to create new reports and refresh existing ones, no significant
 issues had arisen. The project is considered suitable for daily use.
 
-**New features**
+#### New features
 
 - New assertion function `NotEqual` in
   [UnitTest.Assert](Modules/UnitTest.Assert.pq)
 - [VBA helper module](VBA/LibPQ_ThisWorkbook.bas) that simplifies access to the
   metadata about the current workbook
 
-**New modules**
+#### New modules
 
 - [Function.Chain](Modules/Function.Chain.pq) -
   Apply a sequence of operations to the input value
@@ -56,8 +57,8 @@ Most of the features are described in the [README](README.md) and in
 [documentation][docs]. Introductory overview is available at [author's
 blog][intro].
 
-
 #### New features
+
 - Import source code from plain text files located on disk or on the web
 - Unlimited number of import locations ordered by priority
 - [Unit testing][unittesting] framework
