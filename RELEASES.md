@@ -20,6 +20,10 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
   API compatible with the reference implementation
   ([UnitTest.Run](Modules/UnitTest.Run.pq))
 
+#### Other changes
+
+- Test code was moved into a separate directory (#15)
+
 
 
 ## Version 1.1.0 (2018-07-11)
