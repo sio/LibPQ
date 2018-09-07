@@ -10,7 +10,9 @@ LibPQPath:
 [
     Local = {
         "C:\ExtractLocation\LibPQ\Modules",
-        "D:\ExtractLocation\LibPQ\Modules"
+        "C:\ExtractLocation\LibPQ\Tests",
+        "D:\ExtractLocation\LibPQ\Modules",
+        "D:\ExtractLocation\LibPQ\Tests"
     },
     Web = {
         "https://raw.githubusercontent.com/sio/LibPQ/master/Modules/",

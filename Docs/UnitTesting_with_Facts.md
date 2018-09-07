@@ -75,4 +75,4 @@ described previously in this article).
 [Fact]: ../Modules/UnitTest.Fact.pq
 [Facts.Summarize]: ../Modules/UnitTest.Facts.Summarize.pq
 [UnitTest.Discover]: ../Modules/UnitTest.Discover.pq
-[sample test]: ../Modules/Tests.MicrosoftUnitTestDemo.pq
+[sample test]: ../Tests/Tests.MicrosoftUnitTestDemo.pq

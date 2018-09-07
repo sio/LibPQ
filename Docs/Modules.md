@@ -126,8 +126,8 @@ All modules are grouped into namespaces, much like the standard library:
 [Table.NumberColumns]: ../Modules/Table.NumberColumns.pq
 [Table.PromoteHeadersNonEmpty]: ../Modules/Table.PromoteHeadersNonEmpty.pq
 [Table.UseLastValid]: ../Modules/Table.UseLastValid.pq
-[Tests.ConcatenateRows]: ../Modules/Tests.ConcatenateRows.pq
-[Tests.UseLastValid]: ../Modules/Tests.UseLastValid.pq
+[Tests.ConcatenateRows]: ../Tests/Tests.ConcatenateRows.pq
+[Tests.UseLastValid]: ../Tests/Tests.UseLastValid.pq
 [UnitTest.Assert]: ../Modules/UnitTest.Assert.pq
 [UnitTest.Constants]: ../Modules/UnitTest.Constants.pq
 [UnitTest.Discover]: ../Modules/UnitTest.Discover.pq
