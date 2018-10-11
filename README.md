@@ -4,7 +4,7 @@ This project offers a collection of functions and useful queries for Power
 Query Formula Language (also known as M language) and a loader to import source
 code from external modules into Power Query.
 
-### Feature highlights
+#### Feature highlights
 
 - Import source code from plain text files located on disk or on the web
 - Unlimited number of import locations ordered by priority
@@ -13,7 +13,7 @@ code from external modules into Power Query.
 - A collection of general purpose [functions and queries][modules]
 - Compatibility with [@tycho01's library][tycho01]
 
-### More information
+#### More information
 
 - [Introductory overview][intro] is available at author's blog
   along with several [other articles](https://potyarkin.ml/tags/libpq/) on LibPQ
@@ -21,7 +21,7 @@ code from external modules into Power Query.
 - [Release notes](RELEASES.md) contain important information on latest LibPQ changes
 - [Roadmap](ROADMAP.md) describes project vision and plans for the future
 
-### What other people say about LibPQ
+#### What other people say about LibPQ
 
 - Roger Torné: [Reutilizar funciones en Power Query de Excel](http://blog.blauservices.com/?p=1963) (in Spanish)
 - Twitter highlights:
@@ -33,15 +33,15 @@ code from external modules into Power Query.
 [docstrings]: Docs/Docstrings.md
 [docs]: Docs/README.md
 
-# Installation and usage
+## Installation and usage
 
-### Copy source code to the filesystem (optional)
+#### Copy source code to the filesystem (optional)
 
 Download the [contents of this repo][zip] and extract it anywhere you want. If
 you skip this step you will not be able to list all available modules with
 `LibPQ()` call and every time you load a module LibPQ will access the network.
 
-### Add LibPQ to the workbook
+#### Add LibPQ to the workbook
 
 Create two blank queries in your workbook:
 
@@ -49,7 +49,7 @@ Create two blank queries in your workbook:
 - **LibPQPath** - provide location of modules source code (local and/or web).
   See sample at [LibPQPath-sample.pq](LibPQPath-sample.pq)
 
-### Import LibPQ modules when writing your queries
+#### Import LibPQ modules when writing your queries
 
 Import any of the available modules via `LibPQ("modulename")` when writing your
 queries in Advanced Editor.
@@ -60,7 +60,7 @@ the results of loading those modules (function object or output of a query).
 
 [zip]: https://github.com/sio/LibPQ/archive/master.zip
 
-# LibPQ modules
+## LibPQ modules
 All modules are grouped into namespaces, much like the standard library:
 
 - **Date** - Functions for working with dates
@@ -81,7 +81,7 @@ has a clear description in the comment at the top of its source file.
 [modules]: Docs/Modules.md
 [unittesting]: Docs/UnitTesting.md
 
-# Compatibility with @tycho01's library
+## Compatibility with @tycho01's library
 
 LibPQ allows specifying multiple possible locations for source code, that's why
 you can add [@tycho01's library][tycho01] as a fallback.
@@ -98,13 +98,13 @@ Now the `Load` function will be available from `#shared` context, and you
 should be able to import any module from [@tycho01's library][tycho01].
 
 
-# Contributing
+## Contributing
 
 All contributions are welcome!
 Please check [CONTRIBUTING.md](CONTRIBUTING.md) for details
 
 
-# License and copyright
+## License and copyright
 
 Copyright © 2017-2018 Vitaly Potyarkin
 ```
