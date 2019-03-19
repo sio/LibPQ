@@ -9,7 +9,22 @@ changelog](http://keepachangelog.com) is important!
 
 Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
+<!--
 ## Unreleased changes (currently in git master)
+-->
+
+
+
+## Version 1.2.0 (2019-03-19)
+
+#### Git commit: #n/a
+
+This release adds a few minor improvements regarding the unit testing
+framework.
+
+The library has been in regular use for more than a year already and has
+proven to be very stable and had required very little maintenance. Author
+recommends it for use in any suitable task.
 
 #### New features
 
