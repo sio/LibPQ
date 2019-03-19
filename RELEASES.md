@@ -17,7 +17,7 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
 ## Version 1.2.0 (2019-03-19)
 
-#### Git commit: #n/a
+#### Git commit: 836d84470d7830f7a36fe203a7ccfe7a5f7fbad0
 
 This release adds a few minor improvements regarding the unit testing
 framework.
