@@ -8,6 +8,7 @@ code from plain text files located on file system or on the remote web server.
 As of version 1.0.0 that goal is achieved, but LibPQ development continues.
 
 Current goals and values (in order of descending importance) are:
+
 - **Maintaining LibPQ loader**. This is the core functionality of LibPQ and it
   must remain fully operational in future versions of Power Query / PowerBI.
 - **Ensuring backwards compatibility**. LibPQ is there for other developers to
