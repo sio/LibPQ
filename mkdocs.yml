@@ -23,9 +23,9 @@ theme:
     primary: blue
     accent: blue
 
-#google_analytics:
-#  - UA-121532727-2
-#  - hods.ml
+google_analytics:
+  - UA-121532727-3
+  - libpq.ml
 
 markdown_extensions:
   - codehilite:
