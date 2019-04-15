@@ -1,0 +1,33 @@
+site_name: LibPQ
+site_description: Detach your M code from workbooks and reuse it!
+site_author: Vitaly Potyarkin
+site_dir: public
+
+repo_url: https://github.com/sio/LibPQ
+repo_name: sio / LibPQ
+edit_uri: ''
+
+nav:
+  - Documentation: Docs/README.md
+  - Modules: Docs/Modules.md
+  - Release notes: RELEASES.md
+  - Roadmap: ROADMAP.md
+
+docs_dir: mkdocs_source
+theme:
+  name: material
+  logo:
+    icon: extension
+  palette:
+    primary: blue
+    accent: blue
+
+#google_analytics:
+#  - UA-121532727-2
+#  - hods.ml
+
+markdown_extensions:
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: '#'

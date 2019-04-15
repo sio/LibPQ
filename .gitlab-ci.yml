@@ -1,0 +1,14 @@
+image: python:3.5-alpine
+
+pages:
+  script:
+    - apk add rsync
+    - mkdir mkdocs_source
+    - rsync -Rr . mkdocs_source
+    - pip install -r requirements-docs.txt
+    - mkdocs build
+  artifacts:
+    paths:
+      - public/
+  only:
+    - master
