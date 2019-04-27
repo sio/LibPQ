@@ -6,7 +6,7 @@ LibPQ:
 Project website:
     https://github.com/sio/LibPQ
 
-This code was last modified on 2018-02-21
+This code was last modified on 2019-04-27
 
 Timestamp in docstring is necessary for further updating, because this code
 will be copied into the workbook and will be managed manually afterwards.
@@ -35,7 +35,7 @@ let
     Read.Text = (destination as text, optional local as logical) =>
         let
             Local = if local is null then true else local,
-            Fetcher = if Local then File.Contents else Web.Contents
+            Fetcher = if Local then File.Contents else Web.Contents.StaticBase
         in
             Text.FromBinary(
                 Binary.Buffer(
@@ -48,6 +48,17 @@ let
                             destination
                         )
                 )
+            ),
+
+    /* Use static base url when calling Web.Contents  */
+    Web.Contents.StaticBase = (url as text) =>
+        let
+            Parts = Uri.Parts(url),
+            Base = Parts[Scheme] & "://" & Parts[Host] & ":" & Text.From(Parts[Port])
+        in
+            Web.Contents(
+                Base,
+                [RelativePath=Parts[Path], Query=Parts[Query]]
             ),
 
     /*
@@ -280,7 +291,8 @@ let
         Module.NameToProper = Module.NameToProper,
         Module.NameFromProper = Module.NameFromProper,
         Module.Explore = Module.Explore,
-        Module.ImportAny = Module.ImportAny
+        Module.ImportAny = Module.ImportAny,
+        Web.Contents.StaticBase = Web.Contents.StaticBase
     ],
     Library.Names = List.Distinct(Module.Explore(Sources.Local)[module]),
     Library = List.Last(
