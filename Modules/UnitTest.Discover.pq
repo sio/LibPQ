@@ -28,10 +28,14 @@ let
         ),
         each [SuiteVersion] <> null
     ),
+    SuitesValid =
+        if Table.IsEmpty(SuitesFilter)
+        then error Error.Record("LibPQ.TestsNotFound", "No tests were found among local modules", null)
+        else SuitesFilter,
     Suites = Table.RenameColumns(
-        SuitesFilter,
+        SuitesValid,
         List.Zip({
-            Table.ColumnNames(SuitesFilter),
+            Table.ColumnNames(SuitesValid),
             {"Suite", "Object", "Version"}
         })
     ),
