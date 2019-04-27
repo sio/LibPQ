@@ -15,7 +15,7 @@ LibPQPath:
         "D:\ExtractLocation\LibPQ\Tests"
     },
     Web = {
-        "https://raw.githubusercontent.com/sio/LibPQ/master/Modules/",
-        "https://raw.githubusercontent.com/tycho01/pquery/master/"
+        "https://github.com/sio/LibPQ/raw/master/Modules/",
+        "https://github.com/tycho01/pquery/raw/master/",
     }
 ]
