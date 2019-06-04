@@ -139,7 +139,7 @@ groups, IRC/Discord/Telegram chats or on Reddit/StackOverflow.
 
 ## License and copyright
 
-Copyright © 2017-2018 Vitaly Potyarkin
+Copyright © 2017-2019 Vitaly Potyarkin
 ```
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use these files except in compliance with the License.
