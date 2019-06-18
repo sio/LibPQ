@@ -6,7 +6,7 @@ LibPQ:
 Project website:
     https://github.com/sio/LibPQ
 
-This code was last modified on 2018-02-21
+This code was last modified on 2019-06-18
 
 Timestamp in docstring is necessary for further updating, because this code
 will be copied into the workbook and will be managed manually afterwards.
@@ -16,6 +16,7 @@ let
     /* Read LibPQ settings */
     Sources.Local = LibPQPath[Local],
     Sources.Web   = LibPQPath[Web],
+    Sources.Service = try LibPQPath[Service] otherwise "",
 
     /* Constants */
     EXTENSION = ".pq",
@@ -86,8 +87,15 @@ let
     */
     Module.FromPath = (path as text, optional local as logical, optional name as text) =>
         let
-            SourceCode = try Read.Text(path, local)
-                         otherwise "null",
+            SourceCode = if
+                             Text.Length(Sources.Service) > 0
+                         then
+                             Text.FromBinary(Binary.Buffer(Web.Contents(
+                                 Sources.Service, [RelativePath=name & EXTENSION]
+                             )))
+                         else
+                             try Read.Text(path, local)
+                             otherwise "null",
             LoadedObject = Expression.Evaluate(SourceCode, #shared),
             ExtraMetadata = [
                 LibPQ.Module = name,
@@ -184,10 +192,13 @@ let
     /* Import module (first match) from the list of possible locations */
     Module.ImportAny = (name as text, locations as list, optional local as logical) =>
         let
-            Paths = List.Transform(
-                        locations,
-                        each Module.BuildPath(name, _, local)
-                    ),
+            Paths = List.Combine({
+                        List.Transform(
+                            locations,
+                            each Module.BuildPath(name, _, local)
+                        ),
+                        {"null-placeholder"}  /* the list must be non-empty for the loops below to work */
+                     }),
             Loop = List.Generate(
                 () => [
                     i = -1,

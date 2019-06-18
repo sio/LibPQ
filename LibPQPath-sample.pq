@@ -17,5 +17,7 @@ LibPQPath:
     Web = {
         "https://github.com/sio/LibPQ/raw/master/Modules/",
         "https://github.com/tycho01/pquery/raw/master/",
-    }
+    },
+    /* Only a single source of modules is supported when running in PBI service */
+    Service = "https://github.com/sio/LibPQ/raw/master/Modules/"
 ]
