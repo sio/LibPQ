@@ -80,7 +80,11 @@ let
         "Results",
         Table.ColumnNames(Run[Results]{0})
     ),
-    LongResults = Table.RemoveColumns(Expanded, {"Object"}),
+    LongResults =
+        Table.ReplaceErrorValues(
+            Table.RemoveColumns(Expanded, {"Object"}),
+            {"Status", "ERROR"}
+        ),
     ShortResults = Table.Group(
         LongResults,
         {"Status"},

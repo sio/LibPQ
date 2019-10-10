@@ -15,6 +15,7 @@ A sample test suite written for LibPQ
             Return = error "Check the code of this test"
         in
             Return,
+    testWithError2 = Assert[Equal](1, error "hello"),
 
     /** Subtests - simple demonstration **/
     testSubtestDemoSuccess = {
