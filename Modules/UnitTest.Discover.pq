@@ -23,11 +23,30 @@ let
                         Value.Metadata([Value]),
                         Config[Suite.MetaField]
                     )
-                ) otherwise
+                ) otherwise if LooksLikeSuiteWithError([Name], [Value])
+                then
+                    ErrorSuiteMarker
+                else
                     null
         ),
         each [SuiteVersion] <> null
     ),
+    LooksLikeSuiteWithError = (name, object) =>
+        let
+            NameLikeTest = Text.StartsWith(name, Config[Test.Prefix], Comparer.OrdinalIgnoreCase),
+            ObjLikeError =
+                Value.Is(object, type record)
+                and Record.FieldCount(object) = 3
+                and Record.FieldNames(object) = {"Reason", "Message", "Detail"},
+            Return = NameLikeTest and ObjLikeError
+        in
+            Return,
+    PropagateErrors = (suite) =>
+        #table(
+            { "Test", "Result", "Status", "Description"},
+            {{ null,   suite,   "ERROR",   suite[Reason] & ": " &suite[Message]}}
+        ),
+    ErrorSuiteMarker = "This looks like a test suite with invalid code",
     SuitesValid =
         if Table.IsEmpty(SuitesFilter)
         then error Error.Record("LibPQ.TestsNotFound", "No tests were found among local modules", null)
@@ -39,13 +58,18 @@ let
             {"Suite", "Object", "Version"}
         })
     ),
-    SuiteRunners = Record.FromList(
-        List.Transform(
-            Record.FieldValues(Config[Suite.Runners]),
-            each LibPQ(_)
+    SuiteRunners =
+        Record.AddField(
+            Record.FromList(
+                List.Transform(
+                    Record.FieldValues(Config[Suite.Runners]),
+                    each LibPQ(_)
+                ),
+                Record.FieldNames(Config[Suite.Runners])
+            ),
+            ErrorSuiteMarker,
+            PropagateErrors
         ),
-        Record.FieldNames(Config[Suite.Runners])
-    ),
     Run = Table.AddColumn(
         Suites,
         "Results",
