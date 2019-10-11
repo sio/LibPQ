@@ -54,12 +54,12 @@ Calling an assertion function results in one of three outcomes:
         in
             Return,
 
-    /** Check if zero-argument function raises error **/
-    Raises = (func, reason as text, optional message as nullable text, optional detail) =>
+    /** Check if function raises error **/
+    Raises = (func, args as nullable list, reason as text, optional message as nullable text, optional detail) =>
         let
             Message = if message = null then "does not raise " & reason else message,
             Detail = if detail = null then func else detail,
-            Reason = try (try func())[Error][Reason] otherwise null,
+            Reason = try (try Function.Invoke(func, args))[Error][Reason] otherwise null,
             Return = True(Reason = reason, Message, Detail)
         in
             Return
