@@ -33,12 +33,17 @@ let
     ),
     LooksLikeSuiteWithError = (name, object) =>
         let
-            NameLikeTest = Text.StartsWith(name, Config[Test.Prefix], Comparer.OrdinalIgnoreCase),
+            ModuleFilename = object[Detail][LibPQ][LibPQ.Source], // error record is assumed
+            Read.Text = LibPQ("Read.Text"),
+            ModuleSource = Read.Text(ModuleFilename, true),
+            ModuleIsTestSuite = Text.Contains(ModuleSource, Config[Suite.MetaField]),
             ObjLikeError =
                 Value.Is(object, type record)
                 and Record.FieldCount(object) = 3
                 and Record.FieldNames(object) = {"Reason", "Message", "Detail"},
-            Return = NameLikeTest and ObjLikeError
+            Return = ObjLikeError and ModuleIsTestSuite // Order matters for short circuiting.
+                                                        // ModuleIsTestSuite assumes that
+                                                        // object is an error record
         in
             Return,
     PropagateErrors = (suite) =>
