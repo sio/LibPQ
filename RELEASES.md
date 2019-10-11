@@ -9,10 +9,14 @@ changelog](http://keepachangelog.com) is important!
 
 Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
-<!--
 ## Unreleased changes (currently in git master)
--->
 
+#### Other changes
+
+- Improved error reporting and error handling in LibPQ loader and in UnitTest
+  discovery tools ([#18])
+
+[#18]: https://github.com/sio/LibPQ/issues/18
 
 
 ## Version 1.2.0 (2019-03-19)
@@ -37,8 +41,9 @@ recommends it for use in any suitable task.
 
 #### Other changes
 
-- Test code was moved into a separate directory (#15)
+- Test code was moved into a separate directory ([#15])
 
+[#15]: https://github.com/sio/LibPQ/issues/15
 
 
 ## Version 1.1.0 (2018-07-11)
