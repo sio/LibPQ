@@ -4,9 +4,9 @@ LibPQ:
     on filesystem or on the Web.
 
 Project website:
-    https://github.com/sio/LibPQ
+    https://libpq.ml
 
-This code was last modified on 2018-02-21
+This code was last modified on 2019-10-11
 
 Timestamp in docstring is necessary for further updating, because this code
 will be copied into the workbook and will be managed manually afterwards.
@@ -89,6 +89,15 @@ let
             SourceCode = try Read.Text(path, local)
                          otherwise "null",
             LoadedObject = Expression.Evaluate(SourceCode, #shared),
+            LoadTry = try LoadedObject,
+            CustomError = Record.TransformFields(
+                LoadTry[Error],
+                {"Detail", each CustomErrorDetail}
+            ),
+            CustomErrorDetail = [
+                Original = LoadTry[Error][Detail],
+                LibPQ = ExtraMetadata
+            ],
             ExtraMetadata = [
                 LibPQ.Module = name,
                 LibPQ.Source = path,
@@ -101,7 +110,7 @@ let
             OldMetadata = Value.Metadata(LoadedObject),
             TypeMetadata = Value.Metadata(Value.Type(LoadedObject)),
             Module = Value.ReplaceType(
-                LoadedObject,
+                try LoadedObject otherwise error CustomError,
                 Value.ReplaceMetadata(
                     Value.Type(LoadedObject),
                     Record.Combine({ExtraMetadata, TypeMetadata})
