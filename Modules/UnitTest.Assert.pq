@@ -62,5 +62,9 @@ Calling an assertion function results in one of three outcomes:
             Reason = try (try func())[Error][Reason] otherwise null,
             Return = True(Reason = reason, Message, Detail)
         in
-            Return
+            Return,
+
+    /** Same as Raises but with argument list **/
+    InvokeRaises = (func, args as nullable list, reason as text, optional message as nullable text, optional detail) =>
+        Raises(() => Function.Invoke(func, args), reason, message, detail)
 ]

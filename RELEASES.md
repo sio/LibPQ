@@ -15,8 +15,10 @@ Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
 - Improved error reporting and error handling in LibPQ loader and in UnitTest
   discovery tools ([#18])
+- New Assert function: InvokeRaises ([#19])
 
 [#18]: https://github.com/sio/LibPQ/issues/18
+[#19]: https://github.com/sio/LibPQ/issues/19
 
 
 ## Version 1.2.0 (2019-03-19)
