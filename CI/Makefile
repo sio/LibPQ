@@ -8,7 +8,7 @@ TEST_RESULTS=results.json
 
 .PHONY: test
 test: $(TEST_RESULTS)
-$(TEST_RESULTS): LibPQ.pq LibPQPath.pq credentials.xml
+$(TEST_RESULTS): LibPQ.pq LibPQPath.pq credentials.xml test.pq
 $(TEST_RESULTS): $(wildcard ../Modules/*) $(wildcard ../Tests/*)
 	$(PQ) . test -c credentials.xml -o json -f $(TEST_RESULTS)
 
