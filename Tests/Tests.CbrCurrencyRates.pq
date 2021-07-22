@@ -17,7 +17,7 @@ Unit tests for Web.CbrCurrencyRates
     ),
 
     testSpecificValueFromRange = Assert[Equal](
-        Web.CbrCurrencyRates("EUR", "01.02.2020", "01.05.2020")[curs]{26},
+        Web.CbrCurrencyRates("EUR", "01.02.2020", "01.05.2020")[curs]{26}, // 12.03.2020
         81.0207
     ),
 

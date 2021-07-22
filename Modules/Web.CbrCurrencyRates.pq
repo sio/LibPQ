@@ -53,7 +53,11 @@ let
             {"curs", type number},
             {"cdx", type text}
         }
+    ),
+    Sorted = Table.Sort(
+        ChangedType,
+        {"data"}
     )
 in
-    ChangedType
+    Sorted
 
