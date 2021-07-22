@@ -1,0 +1,12 @@
+/**
+envsubst template for LibPQPath.pq
+**/
+
+[
+    Local = {
+        "${LIBPQ}/Modules",
+        "${LIBPQ}/Tests"
+    },
+    Web = {
+    }
+]
