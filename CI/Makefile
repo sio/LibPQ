@@ -1,10 +1,20 @@
 PQ?=pqnet
+PY?=python3
+
+
 export LIBPQ=$(abspath ../)
+TEST_RESULTS=results.json
 
 
 .PHONY: test
-test: LibPQ.pq LibPQPath.pq credentials.xml
-	$(PQ) . $@ -c credentials.xml -o json
+test: $(TEST_RESULTS)
+$(TEST_RESULTS): LibPQ.pq LibPQPath.pq credentials.xml
+	$(PQ) . test -c credentials.xml -o json -f $(TEST_RESULTS)
+
+
+.PHONY: verify
+verify: $(TEST_RESULTS)
+	$(PY) verify.py $(TEST_RESULTS)
 
 
 .PHONY: clean
