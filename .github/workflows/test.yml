@@ -1,0 +1,28 @@
+name: pqnet-unittest
+on:
+  push:
+  schedule:
+    - cron: '45 23 24 * *'
+
+jobs:
+  pqnet:
+    runs-on: windows-latest
+    env:
+      EXPECT_PASSED_TESTS: 30
+      PQ: 'C:\Program Files\PowerQueryNet\PQNet.exe'
+    steps:
+      - uses: actions/checkout@v1
+      - name: download installers
+        shell: bash
+        run: |
+          curl \
+            -o PowerQuerySdk.vsix \
+            -L "http://dakahn.gallery.vsassets.io/_apis/public/gallery/publisher/dakahn/extension/powerquerysdk/1.0.0.16/assetbyname/PowerQuerySdk.vsix"
+          curl \
+            -o PowerQueryNet.msi \
+            -L "https://github.com/gsimardnet/PowerQueryNet/releases/download/v1.1.2/PowerQueryNet.msi"
+      - name: install packages
+        run: |
+          msiexec /i PowerQueryNet.msi /quiet /qn
+      - run: make verify
+        working-directory: ./CI
