@@ -1,1 +1,1 @@
-LibPQ("UnitTest.Discover")()
+LibPQ("UnitTest.Discover")(false)

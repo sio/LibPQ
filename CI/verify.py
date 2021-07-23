@@ -5,12 +5,22 @@ import sys
 
 with open(sys.argv[1]) as f:
     results = json.load(f)
-print(json.dumps(results, ensure_ascii=False, sort_keys=True, indent=2))
 
-assert len(results) == 1, f'Number of unique test statuses: {len(results)} instead of 1'
+successes = []
+failures = []
+for r in results:
+    if r['Status'] == 'PASSED':
+        successes.append(r)
+    else:
+        failures.append(r)
 
-summary = results[0]
-assert summary["Status"] == "PASSED", f'All tests are {summary["Status"]}'
+if failures:
+    print(json.dumps(failures, ensure_ascii=False, sort_keys=True, indent=2))
+assert len(failures) == 0, f'Number of failed tests: {len(failures)}'
 
-expected = int(os.environ.get('EXPECTED_SUCCESS_TESTS', 0))
-assert summary["Count"] == expected, f'Expected {expected} tests to pass, got {summary["Count"]}'
+expected = int(os.environ.get('EXPECT_PASSED_TESTS', 0))
+newline = '\n  '
+assert len(successes) == expected, \
+    (f'Expected {expected} tests to pass, got {len(successes)}: {newline}'
+     f'{newline.join(s["Suite"] + "::" + s["Test"] for s in successes)}')
+print(f'Passed {len(successes)} tests successfully!')
