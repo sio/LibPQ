@@ -2,6 +2,9 @@ PQ?=pqnet
 PY?=python3
 
 
+export EXPECT_PASSED_TESTS=30
+
+
 export LIBPQ=$(abspath ../)
 TEST_RESULTS=results.json
 

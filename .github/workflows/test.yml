@@ -8,7 +8,6 @@ jobs:
   pqnet:
     runs-on: windows-latest
     env:
-      EXPECT_PASSED_TESTS: 30
       PQ: 'C:\Program Files\PowerQueryNet\PQNet.exe'
     steps:
       - uses: actions/checkout@v1
