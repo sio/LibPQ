@@ -9,16 +9,38 @@ changelog](http://keepachangelog.com) is important!
 
 Plans and ideas for future versions can be found in the [roadmap](ROADMAP.md).
 
+<!--
 ## Unreleased changes (currently in git master)
+-->
+
+## Version 1.3.0 (2021-07-27)
+
+This release accumulates a number of small changes over the past two years and
+highlights a significant improvement in LibPQ development: now we have a CI pipeline!
+
+#### New modules
+
+- [Table.MoveColumnsToBeginning](Modules/Table.MoveColumnsToBeginning.pq),
+  [Table.MoveColumnsToEnd](Modules/Table.MoveColumnsToEnd.pq) -
+  Reorder columns by moving some of them to the beginning/end of the table
+  ([#21], thanks to [@ckp95])
+- [Web.CbrCurrencyRates](Modules/Web.CbrCurrencyRates.pq) -
+  Fetch currency rates published by The Central Bank of Russian Federation
 
 #### Other changes
 
+- Unit tests are now automatically executed after each push to this repo
+  thanks to [PowerQueryNet] and GitHub Actions
+- New Assert function: InvokeRaises ([#19], thanks to [@estuelke])
 - Improved error reporting and error handling in LibPQ loader and in UnitTest
   discovery tools ([#18])
-- New Assert function: InvokeRaises ([#19])
 
 [#18]: https://github.com/sio/LibPQ/issues/18
 [#19]: https://github.com/sio/LibPQ/issues/19
+[#21]: https://github.com/sio/LibPQ/issues/21
+[@ckp95]: https://github.com/ckp95
+[@estuelke]: https://github.com/estuelke
+[PowerQueryNet]: https://github.com/gsimardnet/PowerQueryNet
 
 
 ## Version 1.2.0 (2019-03-19)

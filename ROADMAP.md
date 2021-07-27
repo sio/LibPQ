@@ -32,7 +32,7 @@ Current goals and values (in order of descending importance) are:
   separate project that relies on LibPQ for importing the source code.
 
 
-## Roadmap to the next release (probably 1.3.0)
+## Roadmap to the next release (probably 1.4.0)
 
 There are no explicit plans for new features yet. This section will be futher
 updated in the development process. If you think something needs to be added
@@ -40,4 +40,4 @@ or changed in LibPQ, please feel free to create [an
 issue](https://github.com/sio/LibPQ/issues).
 
 If no critical bugs are discovered and no breaking changes arrive with Power
-Query updates, the next (minor) release is scheduled for the beginning of 2020.
+Query updates, the next (minor) release will most likely happen in 2022.

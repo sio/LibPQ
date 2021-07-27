@@ -12,6 +12,7 @@ code from external modules into Power Query.
 - Show [docstrings] in Power Query user interface
 - A collection of general purpose [functions and queries][modules]
 - Compatibility with [@tycho01's library][tycho01]
+- [Automated test execution][CI] before merging any changes to this project
 
 #### More information
 
@@ -32,6 +33,7 @@ code from external modules into Power Query.
 [tycho01]: https://github.com/tycho01/pquery
 [docstrings]: Docs/Docstrings.md
 [docs]: Docs/README.md
+[CI]: CI/README.md
 
 ## Installation and usage
 
@@ -139,7 +141,7 @@ groups, IRC/Discord/Telegram chats or on Reddit/StackOverflow.
 
 ## License and copyright
 
-Copyright © 2017-2019 Vitaly Potyarkin
+Copyright © 2017-2021 Vitaly Potyarkin
 ```
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use these files except in compliance with the License.
