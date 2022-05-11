@@ -1,6 +1,7 @@
 name: pqnet-unittest
 on:
   push:
+  pull_request:
   schedule:
     - cron: '45 23 24 * *'
 
