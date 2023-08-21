@@ -17,7 +17,7 @@ code from external modules into Power Query.
 #### More information
 
 - [Introductory overview][intro] is available at author's blog
-  along with several [other articles](https://potyarkin.ml/tags/libpq/) on LibPQ
+  along with several [other articles](https://potyarkin.com/tags/libpq/) on LibPQ
 - [Documentation][docs] describes some more specific use cases
 - [Release notes](RELEASES.md) contain important information on latest LibPQ changes
 - [Roadmap](ROADMAP.md) describes project vision and plans for the future
@@ -29,7 +29,7 @@ code from external modules into Power Query.
     [Jay Killeen](https://twitter.com/jaykilleen/status/959979020245917696),
     [Maxim Zelensky](https://twitter.com/Hohlick/status/960030006750703616)
 
-[intro]: https://potyarkin.ml/posts/2018/expanding-power-query-standard-library-introducing-libpq/
+[intro]: https://potyarkin.com/posts/2018/expanding-power-query-standard-library-introducing-libpq/
 [tycho01]: https://github.com/tycho01/pquery
 [docstrings]: Docs/Docstrings.md
 [docs]: Docs/README.md

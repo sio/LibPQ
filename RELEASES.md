@@ -116,7 +116,7 @@ blog][intro].
 
 [docs]: Docs/README.md
 [docstrings]: Docs/Docstrings.md
-[intro]: https://potyarkin.ml/posts/2018/expanding-power-query-standard-library-introducing-libpq/
+[intro]: https://potyarkin.com/posts/2018/expanding-power-query-standard-library-introducing-libpq/
 [modules]: Docs/Modules.md
 [tycho01]: https://github.com/tycho01/pquery
 [unittesting]: Docs/UnitTesting.md
